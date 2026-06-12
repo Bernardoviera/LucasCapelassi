@@ -159,7 +159,8 @@
       pointer-events: none;
       animation: float-up 2.5s ease-in-out infinite;
     }
-    #hero-wrap { position: relative; overflow: hidden; }
+    #hero-wrap { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
+    #hero-wrap > #particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 
     /* ---- Timer flash when low ---- */
     @keyframes flash-red {
@@ -188,9 +189,8 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero-bg pt-16 pb-20 px-4" id="hero-wrap">
-    <!-- partículas douradas -->
-    <div id="particles" class="pointer-events-none absolute inset-0 overflow-hidden"></div>
-    <div class="max-w-3xl mx-auto text-center relative z-10">
+    <div id="particles"></div>
+    <div class="max-w-3xl mx-auto text-center w-full relative z-10">
       <span class="tag mb-6 inline-block hero-line-1">Curso online · Acesso imediato</span>
 
       <h1 class="text-4xl md:text-6xl font-black leading-[1.1] mb-6 hero-line-2">
@@ -558,13 +558,10 @@
 
   <script>
     /* ---- Timer ---- */
-    function getExpiry() {
-      let e = localStorage.getItem('lz_expiry');
-      if (!e) { e = Date.now() + 30 * 60 * 1000; localStorage.setItem('lz_expiry', e); }
-      return parseInt(e);
-    }
+    const TIMER_MS = 30 * 60 * 1000;
+    const timerStart = Date.now();
     function updateTimers() {
-      const diff = getExpiry() - Date.now();
+      const diff = TIMER_MS - (Date.now() - timerStart);
       const fmt = diff <= 0 ? '00:00:00' : [
         Math.floor(diff / 3600000),
         Math.floor((diff % 3600000) / 60000),
@@ -574,7 +571,7 @@
         const el = document.getElementById(id);
         if (!el) return;
         el.textContent = fmt;
-        if (diff > 0 && diff < 600000) el.classList.add('timer-low');
+        if (diff > 0 && diff < 300000) el.classList.add('timer-low');
         else el.classList.remove('timer-low');
       });
     }
