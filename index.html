@@ -3,245 +3,328 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lente Zerada — Curso de Revitalização de Faróis e Lanternas</title>
+  <title>Lente Zerada — Aprenda a Restaurar Faróis e Lanternas</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter', sans-serif; background: #0c0c0c; }
     .gold { color: #F5C518; }
-    .bg-gold { background-color: #F5C518; }
-    .border-gold { border-color: #F5C518; }
+    .gold-light { color: #fdd835; }
     .btn-gold {
-      background: linear-gradient(135deg, #F5C518, #e0a800);
-      color: #111;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(245,197,24,0.45);
-    }
-    .card-dark { background: #1a1a1a; border: 1px solid #2a2a2a; }
-    .gradient-hero { background: linear-gradient(160deg, #0a0a0a 0%, #111827 100%); }
-    .checkmark::before { content: "✔"; color: #F5C518; margin-right: 10px; font-size: 1rem; }
-    @keyframes pulse-gold {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(245,197,24,0.5); }
-      50% { box-shadow: 0 0 0 12px rgba(245,197,24,0); }
-    }
-    .pulse-btn { animation: pulse-gold 2s infinite; }
-    .star { color: #F5C518; }
-    .module-number {
-      background: linear-gradient(135deg, #F5C518, #e0a800);
+      background: linear-gradient(135deg, #F5C518 0%, #d4a017 100%);
       color: #111;
       font-weight: 900;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
+      letter-spacing: 0.04em;
+      transition: transform 0.15s, box-shadow 0.15s;
+      text-transform: uppercase;
+    }
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(245,197,24,0.5);
+    }
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245,197,24,0.6); }
+      50%       { box-shadow: 0 0 0 14px rgba(245,197,24,0); }
+    }
+    .pulse-btn { animation: pulse-gold 2.2s infinite; }
+    .card { background: #161616; border: 1px solid #272727; }
+    .card-yellow { background: #161616; border: 1px solid rgba(245,197,24,0.25); }
+    .star { color: #F5C518; }
+    .check::before { content: "✔"; color: #F5C518; margin-right: 10px; }
+    .hero-bg { background: radial-gradient(ellipse at top, #1a1200 0%, #0c0c0c 60%); }
+    .tag {
+      display: inline-block;
+      background: rgba(245,197,24,0.1);
+      border: 1px solid rgba(245,197,24,0.3);
+      color: #F5C518;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+    .divider { border-color: #222; }
+    .module-num {
+      min-width: 36px; height: 36px;
+      background: linear-gradient(135deg, #F5C518, #d4a017);
+      color: #111; font-weight: 900; font-size: 0.8rem;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pain-item { border-left: 3px solid #F5C518; padding-left: 16px; }
+    .testimonial-card {
+      background: #161616;
+      border: 1px solid #272727;
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 12px; left: 20px;
+      font-size: 4rem;
+      color: rgba(245,197,24,0.15);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .section-label {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 0.9rem;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #F5C518;
+      margin-bottom: 16px;
+    }
+    .section-label::before, .section-label::after {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: #F5C518;
     }
   </style>
 </head>
-<body class="bg-black text-white">
+<body class="text-white">
 
-  <!-- ========== HERO ========== -->
-  <section class="gradient-hero py-16 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <p class="gold text-sm font-semibold uppercase tracking-widest mb-4">Curso Completo Online</p>
-      <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">
-        Torne-se um <span class="gold">Especialista</span> em<br />
-        Revitalização de Faróis<br />e Lanternas
-      </h1>
-      <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-        Aprenda do zero as técnicas profissionais, descubra os melhores fornecedores e construa uma renda extra — ou uma carreira — recuperando faróis e lanternas na sua região.
-      </p>
-      <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870" target="_blank" class="btn-gold inline-block px-10 py-5 rounded-xl text-xl pulse-btn">
-        QUERO ME INSCREVER AGORA →
-      </a>
-      <p class="text-gray-500 text-sm mt-4">🔒 Pagamento 100% seguro · Acesso imediato</p>
-    </div>
-  </section>
-
-  <!-- ========== URGÊNCIA / TIMER ========== -->
-  <section class="bg-yellow-400 py-4 px-4 text-black text-center">
-    <p class="font-bold text-base md:text-lg">
-      ⚠️ OFERTA ESPECIAL EXPIRA EM:
-      <span id="timer" class="font-black text-xl ml-2">00:00:00</span>
+  <!-- ===== BARRA DE URGÊNCIA ===== -->
+  <div class="bg-yellow-400 text-black text-center py-3 px-4">
+    <p class="font-black text-sm md:text-base tracking-wide">
+      🔥 OFERTA POR TEMPO LIMITADO — expira em: <span id="timer" class="font-black tabular-nums">00:00:00</span>
     </p>
-  </section>
+  </div>
 
-  <!-- ========== SOBRE O CURSO ========== -->
-  <section class="py-20 px-4 bg-black">
-    <div class="max-w-4xl mx-auto text-center">
-      <p class="gold text-sm font-semibold uppercase tracking-widest mb-3">O que você vai aprender</p>
-      <h2 class="text-3xl md:text-5xl font-black mb-6">Tudo que você precisa para <span class="gold">começar a lucrar</span></h2>
-      <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-16">
-        Um mini curso direto ao ponto com os 6 passos fundamentais para se tornar referência no mercado de recuperação de faróis e lanternas.
+  <!-- ===== HERO ===== -->
+  <section class="hero-bg pt-16 pb-20 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="tag mb-6 inline-block">Curso online · Acesso imediato</span>
+
+      <h1 class="text-4xl md:text-6xl font-black leading-[1.1] mb-6">
+        Você já tem os clientes.<br />
+        <span class="gold">Só falta esse serviço.</span>
+      </h1>
+
+      <p class="text-gray-300 text-lg md:text-xl max-w-xl mx-auto mb-4 leading-relaxed">
+        Aprenda a restaurar faróis e lanternas do jeito certo — e comece a cobrar por isso ainda essa semana.
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-        <div class="card-dark rounded-2xl p-6">
-          <div class="text-4xl mb-4">🎯</div>
-          <h3 class="font-bold text-lg mb-2">Técnicas Profissionais</h3>
-          <p class="text-gray-400 text-sm">Aprenda o passo a passo correto para restaurar qualquer farol ou lanterna com acabamento perfeito.</p>
-        </div>
-        <div class="card-dark rounded-2xl p-6">
-          <div class="text-4xl mb-4">💰</div>
-          <h3 class="font-bold text-lg mb-2">Precificação Justa</h3>
-          <p class="text-gray-400 text-sm">Saiba exatamente quanto cobrar pelos seus serviços para lucrar bem sem perder clientes.</p>
-        </div>
-        <div class="card-dark rounded-2xl p-6">
-          <div class="text-4xl mb-4">🔧</div>
-          <h3 class="font-bold text-lg mb-2">Melhores Fornecedores</h3>
-          <p class="text-gray-400 text-sm">Descubra onde comprar os melhores materiais pelos menores preços do mercado.</p>
-        </div>
-      </div>
+      <p class="text-gray-500 text-base max-w-lg mx-auto mb-10">
+        Quem já trabalha com carro sabe: o cliente chega, vê o farol amarelado e pergunta se você faz. Agora você vai poder dizer que sim.
+      </p>
+
+      <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870" target="_blank"
+         class="btn-gold inline-block px-10 py-5 rounded-xl text-lg pulse-btn">
+        Quero aprender agora →
+      </a>
+      <p class="text-gray-600 text-sm mt-4">🔒 Pagamento seguro via Hotmart · Pix, Cartão ou Boleto</p>
     </div>
   </section>
 
-  <!-- ========== MÓDULOS ========== -->
-  <section class="py-20 px-4 bg-gray-950">
+  <!-- ===== DOR / IDENTIFICAÇÃO ===== -->
+  <section class="py-16 px-4 bg-black">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-10">
+        <div class="section-label justify-center">Você se identifica?</div>
+        <h2 class="text-3xl md:text-4xl font-black">Quantas vezes isso já aconteceu com você?</h2>
+      </div>
+      <div class="space-y-5">
+        <div class="pain-item">
+          <p class="text-gray-300">O cliente te pergunta se você faz restauração de farol e você tem que dizer que não faz — e perde o serviço.</p>
+        </div>
+        <div class="pain-item">
+          <p class="text-gray-300">Você vê concorrentes cobrando R$80, R$120, R$150 por farol e pensa: <em class="text-white">"isso parece fácil, por que eu não faço?"</em></p>
+        </div>
+        <div class="pain-item">
+          <p class="text-gray-300">Já tentou fazer por conta, ficou com resultado ruim e não soube o que errou.</p>
+        </div>
+        <div class="pain-item">
+          <p class="text-gray-300">Quer agregar um serviço novo sem precisar comprar equipamento caro ou fazer curso presencial.</p>
+        </div>
+      </div>
+      <p class="text-center text-gray-400 mt-10 text-base">Se marcou qualquer um desses, o <strong class="text-white">Lente Zerada</strong> foi feito pra você.</p>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE O CURSO ===== -->
+  <section class="py-16 px-4" style="background:#0f0f0f;">
     <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-14">
-        <p class="gold text-sm font-semibold uppercase tracking-widest mb-3">Conteúdo do curso</p>
-        <h2 class="text-3xl md:text-5xl font-black">Os <span class="gold">6 Módulos</span> que vão<br />transformar sua vida</h2>
+      <div class="text-center mb-12">
+        <div class="section-label justify-center">O que é o Lente Zerada</div>
+        <h2 class="text-3xl md:text-4xl font-black mb-4">Um curso <span class="gold">direto ao ponto</span> pra quem já está no mercado</h2>
+        <p class="text-gray-400 text-base max-w-xl mx-auto">Sem enrolação. Sem teoria desnecessária. Só o que você precisa pra aprender, aplicar e já cobrar pelo serviço.</p>
       </div>
-      <div class="space-y-4">
-        <div class="card-dark rounded-2xl p-6 flex items-start gap-4">
-          <div class="module-number">01</div>
-          <div>
-            <h3 class="font-bold text-lg mb-1">Fundamentos da Restauração</h3>
-            <p class="text-gray-400 text-sm">Entenda como funciona o processo de oxidação, os tipos de plástico e o que é possível recuperar.</p>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="card rounded-2xl p-6">
+          <div class="text-3xl mb-3">⚡</div>
+          <h3 class="font-bold text-base mb-2">Rápido de aplicar</h3>
+          <p class="text-gray-500 text-sm">Você assiste hoje e já consegue aplicar no primeiro carro amanhã. Sem curva de aprendizado longa.</p>
         </div>
-        <div class="card-dark rounded-2xl p-6 flex items-start gap-4">
-          <div class="module-number">02</div>
-          <div>
-            <h3 class="font-bold text-lg mb-1">Ferramentas e Materiais</h3>
-            <p class="text-gray-400 text-sm">Lista completa dos equipamentos necessários e onde encontrá-los pelo melhor preço.</p>
-          </div>
+        <div class="card rounded-2xl p-6">
+          <div class="text-3xl mb-3">💸</div>
+          <h3 class="font-bold text-base mb-2">Baixo investimento inicial</h3>
+          <p class="text-gray-500 text-sm">Os materiais são baratos e fáceis de encontrar. O curso te mostra exatamente o que comprar e onde.</p>
         </div>
-        <div class="card-dark rounded-2xl p-6 flex items-start gap-4">
-          <div class="module-number">03</div>
-          <div>
-            <h3 class="font-bold text-lg mb-1">Técnica Passo a Passo</h3>
-            <p class="text-gray-400 text-sm">O processo completo de lixamento, polimento e selagem para um resultado profissional e duradouro.</p>
-          </div>
-        </div>
-        <div class="card-dark rounded-2xl p-6 flex items-start gap-4">
-          <div class="module-number">04</div>
-          <div>
-            <h3 class="font-bold text-lg mb-1">Casos Avançados</h3>
-            <p class="text-gray-400 text-sm">Como lidar com faróis muito danificados, trincados ou com problemas internos.</p>
-          </div>
-        </div>
-        <div class="card-dark rounded-2xl p-6 flex items-start gap-4">
-          <div class="module-number">05</div>
-          <div>
-            <h3 class="font-bold text-lg mb-1">Precificação e Vendas</h3>
-            <p class="text-gray-400 text-sm">Tabela de preços, como abordar clientes e fechar serviços com confiança.</p>
-          </div>
-        </div>
-        <div class="card-dark rounded-2xl p-6 flex items-start gap-4">
-          <div class="module-number">06</div>
-          <div>
-            <h3 class="font-bold text-lg mb-1">Seu Negócio de Faróis</h3>
-            <p class="text-gray-400 text-sm">Como divulgar seus serviços, conquistar clientes fixos e se tornar referência na sua cidade.</p>
-          </div>
+        <div class="card rounded-2xl p-6">
+          <div class="text-3xl mb-3">🚗</div>
+          <h3 class="font-bold text-base mb-2">Serve pra qualquer tipo de atendimento</h3>
+          <p class="text-gray-500 text-sm">Mecânico, polidor, lavajato, martelinho — quem já tem clientes pode agregar esse serviço imediatamente.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== INSTRUTOR ========== -->
-  <section class="py-20 px-4 bg-black">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-14">
-        <p class="gold text-sm font-semibold uppercase tracking-widest mb-3">Quem vai te ensinar</p>
-        <h2 class="text-3xl md:text-5xl font-black">Conheça o <span class="gold">Expert Lucas Capelassi</span></h2>
+  <!-- ===== MÓDULOS ===== -->
+  <section class="py-16 px-4 bg-black">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-10">
+        <div class="section-label justify-center">Conteúdo</div>
+        <h2 class="text-3xl md:text-4xl font-black">O que você vai aprender</h2>
       </div>
-      <div class="card-dark rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-10">
+      <div class="space-y-3">
+
+        <div class="card rounded-xl p-5 flex gap-4 items-start">
+          <div class="module-num">01</div>
+          <div>
+            <h3 class="font-bold mb-1">Por que o farol amarela — e como isso muda tudo</h3>
+            <p class="text-gray-500 text-sm">Entenda o processo de oxidação, tipos de lente e o que é possível recuperar de verdade.</p>
+          </div>
+        </div>
+
+        <div class="card rounded-xl p-5 flex gap-4 items-start">
+          <div class="module-num">02</div>
+          <div>
+            <h3 class="font-bold mb-1">Lista de materiais e onde comprar mais barato</h3>
+            <p class="text-gray-500 text-sm">Sem segredo, sem produto caro importado. O que você já consegue no mercado local funciona.</p>
+          </div>
+        </div>
+
+        <div class="card rounded-xl p-5 flex gap-4 items-start">
+          <div class="module-num">03</div>
+          <div>
+            <h3 class="font-bold mb-1">O processo completo passo a passo</h3>
+            <p class="text-gray-500 text-sm">Lixamento, polimento e selagem — cada etapa explicada em vídeo pra você não errar.</p>
+          </div>
+        </div>
+
+        <div class="card rounded-xl p-5 flex gap-4 items-start">
+          <div class="module-num">04</div>
+          <div>
+            <h3 class="font-bold mb-1">Faróis difíceis — trincados, muito danificados, internos</h3>
+            <p class="text-gray-500 text-sm">Como identificar o que dá pra restaurar e o que não dá, sem prometer o que não consegue entregar.</p>
+          </div>
+        </div>
+
+        <div class="card rounded-xl p-5 flex gap-4 items-start">
+          <div class="module-num">05</div>
+          <div>
+            <h3 class="font-bold mb-1">Quanto cobrar — tabela de preços por tipo de serviço</h3>
+            <p class="text-gray-500 text-sm">Pare de cobrar barato por medo de perder cliente. Aqui você vê o que o mercado cobra de verdade.</p>
+          </div>
+        </div>
+
+        <div class="card rounded-xl p-5 flex gap-4 items-start">
+          <div class="module-num">06</div>
+          <div>
+            <h3 class="font-bold mb-1">Como virar referência na sua cidade</h3>
+            <p class="text-gray-500 text-sm">Dicas simples pra divulgar, ter clientes que voltam e ser indicado por quem já atendeu.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INSTRUTOR ===== -->
+  <section class="py-16 px-4" style="background:#0f0f0f;">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+        <div class="section-label justify-center">Quem ensina</div>
+        <h2 class="text-3xl md:text-4xl font-black">Lucas Capelassi</h2>
+      </div>
+      <div class="card-yellow rounded-2xl p-8 flex flex-col md:flex-row gap-8 items-center">
         <div class="flex-shrink-0 text-center">
-          <div class="w-40 h-40 rounded-full bg-gray-700 mx-auto flex items-center justify-center text-6xl mb-4 overflow-hidden">
-            <img src="https://via.placeholder.com/160x160/1a1a1a/F5C518?text=LC" alt="Lucas Capelassi" class="w-full h-full object-cover" />
+          <div class="w-32 h-32 rounded-full bg-gray-800 mx-auto overflow-hidden flex items-center justify-center text-5xl mb-3">
+            🧑‍🔧
           </div>
-          <div class="flex justify-center gap-1 mb-2">
-            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <div class="flex justify-center gap-0.5 mb-1">
+            <span class="star text-sm">★★★★★</span>
           </div>
-          <p class="text-gray-400 text-xs">Especialista em Faróis</p>
+          <p class="text-gray-500 text-xs">S.O.S Faróis · YouTube</p>
         </div>
-        <div>
-          <h3 class="text-2xl font-black mb-4">Lucas Capelassi</h3>
-          <ul class="space-y-3 text-gray-300 text-sm">
-            <li class="checkmark">Especialista em recuperação de faróis e lanternas</li>
-            <li class="checkmark">Fundador de duas lojas no ramo automotivo</li>
-            <li class="checkmark">Responsável pelo canal S.O.S Faróis no YouTube</li>
-            <li class="checkmark">Já treinou dezenas de profissionais em todo o Brasil</li>
-            <li class="checkmark">Compartilha conhecimento que transforma vidas através do seu negócio</li>
+        <div class="text-left">
+          <p class="text-gray-300 text-base leading-relaxed mb-5">
+            Lucas não veio de escola de negócios. Ele aprendeu na prática, abriu suas próprias lojas e virou referência no nicho. Hoje ensina porque sabe que a maioria dos profissionais que trabalha com carro ainda deixa esse serviço passar.
+          </p>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li class="check">Especialista em restauração de faróis e lanternas</li>
+            <li class="check">Fundador de duas lojas automotivas</li>
+            <li class="check">Canal S.O.S Faróis no YouTube</li>
+            <li class="check">Já formou profissionais em todo o Brasil</li>
           </ul>
-          <p class="text-gray-400 text-sm mt-6 leading-relaxed">
-            "Minha missão é democratizar o conhecimento sobre recuperação de faróis. Qualquer pessoa, com as técnicas certas, pode dominar esse mercado e construir uma renda sólida."
+          <p class="text-gray-500 text-sm mt-5 italic">
+            "Eu poderia guardar esse conhecimento pra mim. Mas quando você ensina, o mercado todo melhora — e você fica ainda mais na frente."
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== DEPOIMENTOS ========== -->
-  <section class="py-20 px-4 bg-gray-950">
-    <div class="max-w-4xl mx-auto text-center">
-      <p class="gold text-sm font-semibold uppercase tracking-widest mb-3">Resultados reais</p>
-      <h2 class="text-3xl md:text-5xl font-black mb-14">O que os alunos estão <span class="gold">dizendo</span></h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+  <!-- ===== DEPOIMENTOS ===== -->
+  <section class="py-16 px-4 bg-black">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <div class="section-label justify-center">Quem já passou por aqui</div>
+        <h2 class="text-3xl md:text-4xl font-black">Resultado de quem <span class="gold">aplicou</span></h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-        <div class="card-dark rounded-2xl p-6">
-          <div class="flex gap-1 mb-3">
-            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        <div class="testimonial-card">
+          <div class="flex gap-0.5 mb-3 mt-1">
+            <span class="star text-xs">★★★★★</span>
           </div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-4">
-            "Em 2 semanas já tinha recuperado meu investimento no curso. Hoje faço isso nas horas vagas e já ganho um salário extra todo mês."
+          <p class="text-gray-300 text-sm leading-relaxed mb-5 pt-2">
+            "Sou mecânico há 8 anos e nunca oferecia esse serviço. Hoje cobra R$100 por farol, são 20 minutos de trabalho. Não sei por que demorei tanto."
           </p>
-          <div class="flex items-center gap-3 mt-auto">
-            <div class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center text-black font-bold text-sm">R</div>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-yellow-400 flex items-center justify-center text-black font-black text-sm flex-shrink-0">R</div>
             <div>
               <p class="font-semibold text-sm">Rafael S.</p>
-              <p class="text-gray-500 text-xs">São Paulo, SP</p>
+              <p class="text-gray-600 text-xs">Mecânico · São Paulo, SP</p>
             </div>
           </div>
         </div>
 
-        <div class="card-dark rounded-2xl p-6">
-          <div class="flex gap-1 mb-3">
-            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        <div class="testimonial-card">
+          <div class="flex gap-0.5 mb-3 mt-1">
+            <span class="star text-xs">★★★★★</span>
           </div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-4">
-            "Achei que seria difícil, mas o Lucas explica tudo de forma muito clara. Já atendo clientes profissionalmente e tenho fila de espera na cidade."
+          <p class="text-gray-300 text-sm leading-relaxed mb-5 pt-2">
+            "Tenho lavajato e adicionei esse serviço no cardápio. Em um mês recuperei o investimento do curso umas 15 vezes. O Lucas é direto, não tem mimimi."
           </p>
-          <div class="flex items-center gap-3 mt-auto">
-            <div class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center text-black font-bold text-sm">M</div>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-yellow-400 flex items-center justify-center text-black font-black text-sm flex-shrink-0">M</div>
             <div>
               <p class="font-semibold text-sm">Marcos A.</p>
-              <p class="text-gray-500 text-xs">Belo Horizonte, MG</p>
+              <p class="text-gray-600 text-xs">Lavajato · Belo Horizonte, MG</p>
             </div>
           </div>
         </div>
 
-        <div class="card-dark rounded-2xl p-6">
-          <div class="flex gap-1 mb-3">
-            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        <div class="testimonial-card">
+          <div class="flex gap-0.5 mb-3 mt-1">
+            <span class="star text-xs">★★★★★</span>
           </div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-4">
-            "O melhor investimento que fiz esse ano. Aprendi a técnica certa, os materiais certos e agora sou a referência da minha região."
+          <p class="text-gray-300 text-sm leading-relaxed mb-5 pt-2">
+            "Fazia polimento e não sabia que farol era tão simples. Agora ofereço no pacote e o cliente nem questiona o preço. Virei referência aqui na cidade."
           </p>
-          <div class="flex items-center gap-3 mt-auto">
-            <div class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center text-black font-bold text-sm">C</div>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-yellow-400 flex items-center justify-center text-black font-black text-sm flex-shrink-0">C</div>
             <div>
               <p class="font-semibold text-sm">Carlos M.</p>
-              <p class="text-gray-500 text-xs">Curitiba, PR</p>
+              <p class="text-gray-600 text-xs">Polidor · Curitiba, PR</p>
             </div>
           </div>
         </div>
@@ -250,117 +333,115 @@
     </div>
   </section>
 
-  <!-- ========== GARANTIA ========== -->
-  <section class="py-20 px-4 bg-black">
-    <div class="max-w-2xl mx-auto text-center">
-      <div class="card-dark rounded-2xl p-10 border border-yellow-400 border-opacity-30">
-        <div class="text-7xl mb-6">🛡️</div>
-        <h2 class="text-3xl font-black mb-4"><span class="gold">Garantia Incondicional</span><br />de 7 Dias</h2>
-        <p class="text-gray-300 text-base leading-relaxed">
-          Se por qualquer motivo você não ficar satisfeito com o curso, basta enviar um e-mail em até <strong class="text-white">7 dias após a compra</strong> e devolvemos <strong class="text-white">100% do seu dinheiro</strong> — sem perguntas, sem burocracia.
+  <!-- ===== GARANTIA ===== -->
+  <section class="py-16 px-4" style="background:#0f0f0f;">
+    <div class="max-w-xl mx-auto text-center">
+      <div class="card-yellow rounded-2xl p-10">
+        <div class="text-6xl mb-5">🛡️</div>
+        <h2 class="text-2xl font-black mb-3"><span class="gold">7 dias de garantia</span> incondicional</h2>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Se você assistir o curso e achar que não valeu, manda um e-mail em até <strong class="text-white">7 dias</strong> e devolvemos <strong class="text-white">100% do seu dinheiro</strong>. Sem perguntas, sem burocracia. O risco é todo nosso.
         </p>
-        <p class="gold font-semibold mt-6">Você não tem nada a perder. Só a ganhar.</p>
       </div>
     </div>
   </section>
 
-  <!-- ========== PREÇO / CTA ========== -->
-  <section id="comprar" class="py-20 px-4 bg-gray-950">
-    <div class="max-w-xl mx-auto text-center">
-      <p class="gold text-sm font-semibold uppercase tracking-widest mb-4">Oferta por tempo limitado</p>
-      <h2 class="text-3xl md:text-4xl font-black mb-8">Comece agora e transforme<br />seu conhecimento em renda</h2>
+  <!-- ===== PREÇO / CTA ===== -->
+  <section id="comprar" class="py-16 px-4 bg-black">
+    <div class="max-w-md mx-auto">
+      <div class="text-center mb-8">
+        <div class="section-label justify-center">Investimento</div>
+        <h2 class="text-3xl font-black">Quanto custa um serviço<br /><span class="gold">que você ainda não oferece?</span></h2>
+      </div>
 
-      <div class="card-dark rounded-2xl p-10 border border-yellow-400 border-opacity-30">
-        <p class="text-gray-500 text-sm line-through mb-1">De R$ 397,00</p>
-        <p class="text-gray-300 text-lg mb-2">Por apenas</p>
-        <p class="text-7xl font-black gold leading-none mb-1">R$149</p>
-        <p class="text-gray-400 text-sm mb-1">,00 — pagamento único</p>
-        <p class="text-yellow-300 text-base font-bold mb-2">ou 12x de R$ 41,06 no cartão</p>
+      <div class="card-yellow rounded-2xl p-8 text-center">
+        <p class="text-gray-600 text-sm line-through mb-1">De R$ 397,00</p>
+        <div class="mb-1">
+          <span class="text-gray-400 text-base">por apenas </span>
+          <span class="text-6xl font-black gold">R$149</span>
+          <span class="text-gray-400 text-lg">,00</span>
+        </div>
+        <p class="text-yellow-300 font-bold text-base mb-6">ou 12x de R$ 41,06 no cartão</p>
 
-        <div class="border-t border-gray-800 my-6"></div>
+        <hr class="divider mb-6" />
 
-        <ul class="text-left space-y-2 mb-8 text-sm text-gray-300">
-          <li class="checkmark">Acesso imediato após pagamento</li>
-          <li class="checkmark">Acesso em qualquer dispositivo</li>
-          <li class="checkmark">Suporte via WhatsApp</li>
-          <li class="checkmark">Certificado de conclusão digital</li>
-          <li class="checkmark">Atualizações gratuitas do curso</li>
+        <ul class="text-left space-y-2 text-sm text-gray-300 mb-7">
+          <li class="check">Acesso imediato após o pagamento</li>
+          <li class="check">Funciona no celular, tablet e computador</li>
+          <li class="check">Certificado de conclusão digital</li>
+          <li class="check">Atualizações gratuitas</li>
+          <li class="check">Suporte via WhatsApp</li>
         </ul>
 
-        <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870" target="_blank" class="btn-gold block w-full py-5 rounded-xl text-xl text-center pulse-btn mb-4">
-          GARANTIR MINHA VAGA AGORA →
+        <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870"
+           target="_blank"
+           class="btn-gold block w-full py-5 rounded-xl text-lg text-center pulse-btn mb-3">
+          Garantir minha vaga →
         </a>
-        <p class="text-gray-500 text-xs">🔒 Pagamento 100% seguro · Pix, Cartão ou Boleto</p>
+        <p class="text-gray-600 text-xs">🔒 Pix · Cartão de crédito · Boleto</p>
 
-        <div class="mt-4 flex justify-center gap-4 opacity-60">
-          <span class="text-xs bg-gray-800 px-3 py-1 rounded-full">VISA</span>
-          <span class="text-xs bg-gray-800 px-3 py-1 rounded-full">MASTER</span>
-          <span class="text-xs bg-gray-800 px-3 py-1 rounded-full">PIX</span>
-          <span class="text-xs bg-gray-800 px-3 py-1 rounded-full">BOLETO</span>
+        <div class="mt-4 pt-4 border-t border-gray-800">
+          <p class="text-yellow-400 text-xs font-semibold">⏱ Oferta expira em: <span id="timer2" class="font-black tabular-nums">00:00:00</span></p>
         </div>
-      </div>
-
-      <div class="mt-8 bg-yellow-400 bg-opacity-10 border border-yellow-400 border-opacity-30 rounded-xl p-4">
-        <p class="text-yellow-300 text-sm font-semibold">⏱️ Oferta expira em: <span id="timer2" class="font-black">00:00:00</span></p>
       </div>
     </div>
   </section>
 
-  <!-- ========== FAQ ========== -->
-  <section class="py-20 px-4 bg-black">
+  <!-- ===== FAQ ===== -->
+  <section class="py-16 px-4" style="background:#0f0f0f;">
     <div class="max-w-2xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl md:text-4xl font-black">Perguntas <span class="gold">Frequentes</span></h2>
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-black">Dúvidas <span class="gold">frequentes</span></h2>
       </div>
-      <div class="space-y-4" id="faq">
+      <div class="space-y-3" id="faq">
 
-        <div class="faq-item card-dark rounded-xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full text-left p-6 font-semibold flex justify-between items-center">
-            Para quem é esse produto?
-            <span class="gold text-xl transition-transform duration-200">+</span>
+        <div class="faq-item card rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 font-semibold text-sm flex justify-between items-center gap-4">
+            Preciso ter experiência com carros?
+            <span class="gold text-lg flex-shrink-0">+</span>
           </button>
-          <div class="faq-answer hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed">
-            Para qualquer pessoa que queira aprender uma nova habilidade, ganhar uma renda extra ou montar um negócio próprio. Não é necessário experiência prévia.
+          <div class="faq-answer hidden px-6 pb-5 text-gray-500 text-sm leading-relaxed">
+            Não é obrigatório, mas quem já trabalha com carro aproveita muito mais rápido. O curso foi pensado pra mecânicos, polidores, lavajatos e qualquer profissional do ramo automotivo.
           </div>
         </div>
 
-        <div class="faq-item card-dark rounded-xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full text-left p-6 font-semibold flex justify-between items-center">
-            Como funciona a garantia de 7 dias?
-            <span class="gold text-xl transition-transform duration-200">+</span>
+        <div class="faq-item card rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 font-semibold text-sm flex justify-between items-center gap-4">
+            Precisa comprar equipamento caro?
+            <span class="gold text-lg flex-shrink-0">+</span>
           </button>
-          <div class="faq-answer hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed">
-            Se você não ficar satisfeito por qualquer motivo, basta enviar um e-mail dentro de 7 dias e devolvemos 100% do valor pago, sem perguntas.
+          <div class="faq-answer hidden px-6 pb-5 text-gray-500 text-sm leading-relaxed">
+            Não. Os materiais são simples e baratos — você vai aprender exatamente o que comprar, onde e quanto custa. Dá pra começar com pouco.
           </div>
         </div>
 
-        <div class="faq-item card-dark rounded-xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full text-left p-6 font-semibold flex justify-between items-center">
-            Como acesso o curso após a compra?
-            <span class="gold text-xl transition-transform duration-200">+</span>
+        <div class="faq-item card rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 font-semibold text-sm flex justify-between items-center gap-4">
+            Como funciona a garantia?
+            <span class="gold text-lg flex-shrink-0">+</span>
           </button>
-          <div class="faq-answer hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed">
-            Imediatamente após a confirmação do pagamento você recebe um e-mail com o link de acesso. O curso funciona em celular, tablet e computador.
+          <div class="faq-answer hidden px-6 pb-5 text-gray-500 text-sm leading-relaxed">
+            7 dias corridos após a compra. Se por qualquer motivo não ficar satisfeito, manda um e-mail e devolvemos tudo. Sem perguntas.
           </div>
         </div>
 
-        <div class="faq-item card-dark rounded-xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full text-left p-6 font-semibold flex justify-between items-center">
-            O curso tem certificado de conclusão?
-            <span class="gold text-xl transition-transform duration-200">+</span>
+        <div class="faq-item card rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 font-semibold text-sm flex justify-between items-center gap-4">
+            Como acesso o curso?
+            <span class="gold text-lg flex-shrink-0">+</span>
           </button>
-          <div class="faq-answer hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed">
-            Sim! Ao concluir o curso você recebe um certificado digital que comprova sua especialização em revitalização de faróis e lanternas.
+          <div class="faq-answer hidden px-6 pb-5 text-gray-500 text-sm leading-relaxed">
+            Assim que o pagamento for confirmado você recebe um e-mail com o acesso. Funciona em qualquer celular, tablet ou computador.
           </div>
         </div>
 
-        <div class="faq-item card-dark rounded-xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full text-left p-6 font-semibold flex justify-between items-center">
-            Como faço para comprar?
-            <span class="gold text-xl transition-transform duration-200">+</span>
+        <div class="faq-item card rounded-xl overflow-hidden">
+          <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 font-semibold text-sm flex justify-between items-center gap-4">
+            Posso parcelar?
+            <span class="gold text-lg flex-shrink-0">+</span>
           </button>
-          <div class="faq-answer hidden px-6 pb-6 text-gray-400 text-sm leading-relaxed">
-            Clique no botão "Garantir Minha Vaga Agora", escolha a forma de pagamento (Pix, Cartão ou Boleto) e pronto. O processo leva menos de 2 minutos.
+          <div class="faq-answer hidden px-6 pb-5 text-gray-500 text-sm leading-relaxed">
+            Sim. Você pode parcelar em até 12x de R$ 41,06 no cartão de crédito, ou pagar à vista via Pix ou Boleto por R$ 149,00.
           </div>
         </div>
 
@@ -368,67 +449,48 @@
     </div>
   </section>
 
-  <!-- ========== FOOTER CTA ========== -->
-  <section class="py-16 px-4 gradient-hero text-center">
-    <h2 class="text-3xl md:text-4xl font-black mb-4">Não perca mais tempo.<br /><span class="gold">Comece hoje.</span></h2>
-    <p class="text-gray-400 mb-8">Cada dia sem o curso é um dia de oportunidade perdida na sua cidade.</p>
-    <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870" target="_blank" class="btn-gold inline-block px-10 py-5 rounded-xl text-xl pulse-btn">
-      QUERO COMEÇAR AGORA →
+  <!-- ===== FOOTER CTA ===== -->
+  <section class="py-16 px-4 bg-black text-center border-t border-gray-900">
+    <p class="text-gray-500 text-sm mb-3">Você já tem o cliente. Só falta esse serviço.</p>
+    <h2 class="text-3xl md:text-4xl font-black mb-6">Comece hoje.<br /><span class="gold">Cobre amanhã.</span></h2>
+    <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870"
+       target="_blank"
+       class="btn-gold inline-block px-10 py-5 rounded-xl text-lg pulse-btn">
+      Garantir minha vaga →
     </a>
   </section>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="bg-black border-t border-gray-900 py-8 px-4 text-center text-gray-600 text-xs">
-    <p>© 2026 Lente Zerada — Expert Lucas Capelassi. Todos os direitos reservados.</p>
-    <p class="mt-2">Ao comprar você concorda com nossos termos de uso e política de privacidade.</p>
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-black border-t border-gray-900 py-6 px-4 text-center text-gray-700 text-xs">
+    <p>© 2026 Lente Zerada — Lucas Capelassi. Todos os direitos reservados.</p>
+    <p class="mt-1">Ao comprar você concorda com os termos de uso e política de privacidade.</p>
   </footer>
 
   <script>
-    // Countdown timer — 24h from first visit, stored in localStorage
     function getExpiry() {
-      let expiry = localStorage.getItem('lz_expiry');
-      if (!expiry) {
-        expiry = Date.now() + 24 * 60 * 60 * 1000;
-        localStorage.setItem('lz_expiry', expiry);
-      }
-      return parseInt(expiry);
+      let e = localStorage.getItem('lz_expiry');
+      if (!e) { e = Date.now() + 24 * 3600 * 1000; localStorage.setItem('lz_expiry', e); }
+      return parseInt(e);
     }
-
     function updateTimers() {
       const diff = getExpiry() - Date.now();
-      if (diff <= 0) {
-        ['timer', 'timer2'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.textContent = '00:00:00';
-        });
-        return;
-      }
-      const h = Math.floor(diff / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
-      const fmt = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-      ['timer', 'timer2'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = fmt;
-      });
+      const fmt = diff <= 0 ? '00:00:00' : [
+        Math.floor(diff / 3600000),
+        Math.floor((diff % 3600000) / 60000),
+        Math.floor((diff % 60000) / 1000)
+      ].map(n => String(n).padStart(2, '0')).join(':');
+      ['timer','timer2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = fmt; });
     }
-
     setInterval(updateTimers, 1000);
     updateTimers();
 
-    // FAQ accordion
     function toggleFaq(btn) {
-      const answer = btn.nextElementSibling;
+      const ans = btn.nextElementSibling;
       const icon = btn.querySelector('span');
-      const isOpen = !answer.classList.contains('hidden');
-      // Close all
+      const open = !ans.classList.contains('hidden');
       document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
       document.querySelectorAll('.faq-item button span').forEach(i => i.textContent = '+');
-      // Open clicked if was closed
-      if (!isOpen) {
-        answer.classList.remove('hidden');
-        icon.textContent = '−';
-      }
+      if (!open) { ans.classList.remove('hidden'); icon.textContent = '−'; }
     }
   </script>
 </body>
