@@ -560,7 +560,7 @@
     /* ---- Timer ---- */
     function getExpiry() {
       let e = localStorage.getItem('lz_expiry');
-      if (!e) { e = Date.now() + 24 * 3600 * 1000; localStorage.setItem('lz_expiry', e); }
+      if (!e) { e = Date.now() + 30 * 60 * 1000; localStorage.setItem('lz_expiry', e); }
       return parseInt(e);
     }
     function updateTimers() {
