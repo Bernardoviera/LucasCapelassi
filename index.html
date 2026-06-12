@@ -87,6 +87,94 @@
       width: 24px; height: 1px;
       background: #F5C518;
     }
+
+    /* ---- Scroll reveal ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1); }
+    .reveal-left.visible  { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* stagger delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+
+    /* ---- Hero text animation ---- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-line-1 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.1s both; }
+    .hero-line-2 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.25s both; }
+    .hero-line-3 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.4s both; }
+    .hero-line-4 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.55s both; }
+    .hero-line-5 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.7s both; }
+
+    /* ---- Card hover ---- */
+    .card, .card-yellow, .testimonial-card {
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .card:hover, .testimonial-card:hover {
+      border-color: rgba(245,197,24,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    }
+
+    /* ---- Module row hover ---- */
+    .module-row {
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .module-row:hover {
+      border-color: rgba(245,197,24,0.4);
+      background: #1c1c00;
+      transform: translateX(4px);
+    }
+
+    /* ---- Pain item hover ---- */
+    .pain-item {
+      transition: border-color 0.2s, padding-left 0.2s;
+    }
+    .pain-item:hover { border-color: #fdd835; padding-left: 22px; }
+
+    /* ---- Golden sparkle particles ---- */
+    @keyframes float-up {
+      0%   { opacity: 0;   transform: translateY(0)   scale(0.5); }
+      20%  { opacity: 0.8; }
+      100% { opacity: 0;   transform: translateY(-80px) scale(1); }
+    }
+    .particle {
+      position: absolute;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: #F5C518;
+      pointer-events: none;
+      animation: float-up 2.5s ease-in-out infinite;
+    }
+    #hero-wrap { position: relative; overflow: hidden; }
+
+    /* ---- Timer flash when low ---- */
+    @keyframes flash-red {
+      0%, 100% { color: #ef4444; }
+      50%       { color: #fca5a5; }
+    }
+    .timer-low { animation: flash-red 0.8s infinite; }
+
+    /* ---- Price pop ---- */
+    @keyframes pop {
+      0%   { transform: scale(0.85); opacity: 0; }
+      70%  { transform: scale(1.05); }
+      100% { transform: scale(1);    opacity: 1; }
+    }
+    .price-pop { animation: pop 0.6s cubic-bezier(.22,1,.36,1) 0.3s both; }
   </style>
 </head>
 <body class="text-white">
@@ -99,75 +187,77 @@
   </div>
 
   <!-- ===== HERO ===== -->
-  <section class="hero-bg pt-16 pb-20 px-4">
-    <div class="max-w-3xl mx-auto text-center">
-      <span class="tag mb-6 inline-block">Curso online · Acesso imediato</span>
+  <section class="hero-bg pt-16 pb-20 px-4" id="hero-wrap">
+    <!-- partículas douradas -->
+    <div id="particles" class="pointer-events-none absolute inset-0 overflow-hidden"></div>
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <span class="tag mb-6 inline-block hero-line-1">Curso online · Acesso imediato</span>
 
-      <h1 class="text-4xl md:text-6xl font-black leading-[1.1] mb-6">
+      <h1 class="text-4xl md:text-6xl font-black leading-[1.1] mb-6 hero-line-2">
         Você já tem os clientes.<br />
         <span class="gold">Só falta esse serviço.</span>
       </h1>
 
-      <p class="text-gray-300 text-lg md:text-xl max-w-xl mx-auto mb-4 leading-relaxed">
+      <p class="text-gray-300 text-lg md:text-xl max-w-xl mx-auto mb-4 leading-relaxed hero-line-3">
         Aprenda a restaurar faróis e lanternas do jeito certo — e comece a cobrar por isso ainda essa semana.
       </p>
-      <p class="text-gray-500 text-base max-w-lg mx-auto mb-10">
+      <p class="text-gray-500 text-base max-w-lg mx-auto mb-10 hero-line-4">
         Quem já trabalha com carro sabe: o cliente chega, vê o farol amarelado e pergunta se você faz. Agora você vai poder dizer que sim.
       </p>
 
       <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870" target="_blank"
-         class="btn-gold inline-block px-10 py-5 rounded-xl text-lg pulse-btn">
+         class="btn-gold inline-block px-10 py-5 rounded-xl text-lg pulse-btn hero-line-5">
         Quero aprender agora →
       </a>
-      <p class="text-gray-600 text-sm mt-4">🔒 Pagamento seguro via Hotmart · Pix, Cartão ou Boleto</p>
+      <p class="text-gray-600 text-sm mt-4 hero-line-5">🔒 Pagamento seguro via Hotmart · Pix, Cartão ou Boleto</p>
     </div>
   </section>
 
   <!-- ===== DOR / IDENTIFICAÇÃO ===== -->
   <section class="py-16 px-4 bg-black">
     <div class="max-w-2xl mx-auto">
-      <div class="text-center mb-10">
+      <div class="text-center mb-10 reveal">
         <div class="section-label justify-center">Você se identifica?</div>
         <h2 class="text-3xl md:text-4xl font-black">Quantas vezes isso já aconteceu com você?</h2>
       </div>
       <div class="space-y-5">
-        <div class="pain-item">
+        <div class="pain-item reveal delay-1">
           <p class="text-gray-300">O cliente te pergunta se você faz restauração de farol e você tem que dizer que não faz — e perde o serviço.</p>
         </div>
-        <div class="pain-item">
+        <div class="pain-item reveal delay-2">
           <p class="text-gray-300">Você vê concorrentes cobrando R$80, R$120, R$150 por farol e pensa: <em class="text-white">"isso parece fácil, por que eu não faço?"</em></p>
         </div>
-        <div class="pain-item">
+        <div class="pain-item reveal delay-3">
           <p class="text-gray-300">Já tentou fazer por conta, ficou com resultado ruim e não soube o que errou.</p>
         </div>
-        <div class="pain-item">
+        <div class="pain-item reveal delay-4">
           <p class="text-gray-300">Quer agregar um serviço novo sem precisar comprar equipamento caro ou fazer curso presencial.</p>
         </div>
       </div>
-      <p class="text-center text-gray-400 mt-10 text-base">Se marcou qualquer um desses, o <strong class="text-white">Lente Zerada</strong> foi feito pra você.</p>
+      <p class="text-center text-gray-400 mt-10 text-base reveal delay-5">Se marcou qualquer um desses, o <strong class="text-white">Lente Zerada</strong> foi feito pra você.</p>
     </div>
   </section>
 
   <!-- ===== SOBRE O CURSO ===== -->
   <section class="py-16 px-4" style="background:#0f0f0f;">
     <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 reveal">
         <div class="section-label justify-center">O que é o Lente Zerada</div>
         <h2 class="text-3xl md:text-4xl font-black mb-4">Um curso <span class="gold">direto ao ponto</span> pra quem já está no mercado</h2>
         <p class="text-gray-400 text-base max-w-xl mx-auto">Sem enrolação. Sem teoria desnecessária. Só o que você precisa pra aprender, aplicar e já cobrar pelo serviço.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="card rounded-2xl p-6">
+        <div class="card rounded-2xl p-6 reveal delay-1">
           <div class="text-3xl mb-3">⚡</div>
           <h3 class="font-bold text-base mb-2">Rápido de aplicar</h3>
           <p class="text-gray-500 text-sm">Você assiste hoje e já consegue aplicar no primeiro carro amanhã. Sem curva de aprendizado longa.</p>
         </div>
-        <div class="card rounded-2xl p-6">
+        <div class="card rounded-2xl p-6 reveal delay-2">
           <div class="text-3xl mb-3">💸</div>
           <h3 class="font-bold text-base mb-2">Baixo investimento inicial</h3>
           <p class="text-gray-500 text-sm">Os materiais são baratos e fáceis de encontrar. O curso te mostra exatamente o que comprar e onde.</p>
         </div>
-        <div class="card rounded-2xl p-6">
+        <div class="card rounded-2xl p-6 reveal delay-3">
           <div class="text-3xl mb-3">🚗</div>
           <h3 class="font-bold text-base mb-2">Serve pra qualquer tipo de atendimento</h3>
           <p class="text-gray-500 text-sm">Mecânico, polidor, lavajato, martelinho — quem já tem clientes pode agregar esse serviço imediatamente.</p>
@@ -185,7 +275,7 @@
       </div>
       <div class="space-y-3">
 
-        <div class="card rounded-xl p-5 flex gap-4 items-start">
+        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
           <div class="module-num">01</div>
           <div>
             <h3 class="font-bold mb-1">Por que o farol amarela — e como isso muda tudo</h3>
@@ -193,7 +283,7 @@
           </div>
         </div>
 
-        <div class="card rounded-xl p-5 flex gap-4 items-start">
+        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
           <div class="module-num">02</div>
           <div>
             <h3 class="font-bold mb-1">Lista de materiais e onde comprar mais barato</h3>
@@ -201,7 +291,7 @@
           </div>
         </div>
 
-        <div class="card rounded-xl p-5 flex gap-4 items-start">
+        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
           <div class="module-num">03</div>
           <div>
             <h3 class="font-bold mb-1">O processo completo passo a passo</h3>
@@ -209,7 +299,7 @@
           </div>
         </div>
 
-        <div class="card rounded-xl p-5 flex gap-4 items-start">
+        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
           <div class="module-num">04</div>
           <div>
             <h3 class="font-bold mb-1">Faróis difíceis — trincados, muito danificados, internos</h3>
@@ -217,7 +307,7 @@
           </div>
         </div>
 
-        <div class="card rounded-xl p-5 flex gap-4 items-start">
+        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
           <div class="module-num">05</div>
           <div>
             <h3 class="font-bold mb-1">Quanto cobrar — tabela de preços por tipo de serviço</h3>
@@ -225,7 +315,7 @@
           </div>
         </div>
 
-        <div class="card rounded-xl p-5 flex gap-4 items-start">
+        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
           <div class="module-num">06</div>
           <div>
             <h3 class="font-bold mb-1">Como virar referência na sua cidade</h3>
@@ -240,11 +330,11 @@
   <!-- ===== INSTRUTOR ===== -->
   <section class="py-16 px-4" style="background:#0f0f0f;">
     <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-10">
+      <div class="text-center mb-10 reveal">
         <div class="section-label justify-center">Quem ensina</div>
         <h2 class="text-3xl md:text-4xl font-black">Lucas Capelassi</h2>
       </div>
-      <div class="card-yellow rounded-2xl p-8 flex flex-col md:flex-row gap-8 items-center">
+      <div class="card-yellow rounded-2xl p-8 flex flex-col md:flex-row gap-8 items-center reveal">
         <div class="flex-shrink-0 text-center">
           <div class="w-32 h-32 rounded-full bg-gray-800 mx-auto overflow-hidden flex items-center justify-center text-5xl mb-3">
             🧑‍🔧
@@ -281,7 +371,7 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-        <div class="testimonial-card">
+        <div class="testimonial-card reveal delay-1">
           <div class="flex gap-0.5 mb-3 mt-1">
             <span class="star text-xs">★★★★★</span>
           </div>
@@ -297,7 +387,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card reveal delay-2">
           <div class="flex gap-0.5 mb-3 mt-1">
             <span class="star text-xs">★★★★★</span>
           </div>
@@ -313,7 +403,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card">
+        <div class="testimonial-card reveal delay-3">
           <div class="flex gap-0.5 mb-3 mt-1">
             <span class="star text-xs">★★★★★</span>
           </div>
@@ -354,9 +444,9 @@
         <h2 class="text-3xl font-black">Quanto custa um serviço<br /><span class="gold">que você ainda não oferece?</span></h2>
       </div>
 
-      <div class="card-yellow rounded-2xl p-8 text-center">
+      <div class="card-yellow rounded-2xl p-8 text-center reveal">
         <p class="text-gray-600 text-sm line-through mb-1">De R$ 397,00</p>
-        <div class="mb-1">
+        <div class="mb-1 price-pop">
           <span class="text-gray-400 text-base">por apenas </span>
           <span class="text-6xl font-black gold">R$149</span>
           <span class="text-gray-400 text-lg">,00</span>
@@ -467,6 +557,7 @@
   </footer>
 
   <script>
+    /* ---- Timer ---- */
     function getExpiry() {
       let e = localStorage.getItem('lz_expiry');
       if (!e) { e = Date.now() + 24 * 3600 * 1000; localStorage.setItem('lz_expiry', e); }
@@ -479,11 +570,18 @@
         Math.floor((diff % 3600000) / 60000),
         Math.floor((diff % 60000) / 1000)
       ].map(n => String(n).padStart(2, '0')).join(':');
-      ['timer','timer2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = fmt; });
+      ['timer','timer2'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = fmt;
+        if (diff > 0 && diff < 600000) el.classList.add('timer-low');
+        else el.classList.remove('timer-low');
+      });
     }
     setInterval(updateTimers, 1000);
     updateTimers();
 
+    /* ---- FAQ accordion ---- */
     function toggleFaq(btn) {
       const ans = btn.nextElementSibling;
       const icon = btn.querySelector('span');
@@ -492,6 +590,39 @@
       document.querySelectorAll('.faq-item button span').forEach(i => i.textContent = '+');
       if (!open) { ans.classList.remove('hidden'); icon.textContent = '−'; }
     }
+
+    /* ---- Scroll reveal ---- */
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ---- Partículas douradas no hero ---- */
+    const container = document.getElementById('particles');
+    function spawnParticle() {
+      if (!container) return;
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 4 + 2;
+      p.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random() * 100}%;
+        bottom:${Math.random() * 30}%;
+        animation-duration:${2 + Math.random() * 2.5}s;
+        animation-delay:${Math.random() * 1.5}s;
+        opacity:0;
+      `;
+      container.appendChild(p);
+      setTimeout(() => p.remove(), 5000);
+    }
+    setInterval(spawnParticle, 350);
+    for (let i = 0; i < 8; i++) setTimeout(spawnParticle, i * 200);
   </script>
 </body>
 </html>
