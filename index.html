@@ -119,6 +119,23 @@
     .hero-line-4 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.55s both; }
     .hero-line-5 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.7s both; }
 
+    /* ---- Rotating word ---- */
+    @keyframes wordIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes wordOut {
+      from { opacity: 1; transform: translateY(0); }
+      to   { opacity: 0; transform: translateY(-14px); }
+    }
+    .rotating-word {
+      display: inline-block;
+      color: #F5C518;
+      min-width: 2ch;
+    }
+    .rotating-word.entering { animation: wordIn 0.4s cubic-bezier(.22,1,.36,1) forwards; }
+    .rotating-word.leaving  { animation: wordOut 0.35s cubic-bezier(.55,0,1,.45) forwards; }
+
     /* ---- Card hover ---- */
     .card, .card-yellow, .testimonial-card {
       transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
@@ -201,7 +218,7 @@
 
       <!-- headline -->
       <h1 class="text-4xl md:text-6xl font-black leading-[1.05] mb-5 hero-line-2 text-center md:text-left">
-        O farol amarelado<br />
+        O <span class="rotating-word entering" id="rotating-word">farol amarelado</span><br />
         do seu cliente<br />
         <span class="gold">é dinheiro no seu bolso.</span>
       </h1>
@@ -614,6 +631,30 @@
     }
     setInterval(updateTimers, 1000);
     updateTimers();
+
+    /* ---- Rotating word ---- */
+    const rotatingWords = [
+      'farol amarelado',
+      'lanterna baça',
+      'farol opaco',
+      'farol arranhado',
+      'lanterna amarela',
+      'farol sem brilho',
+    ];
+    let rotIdx = 0;
+    const rotEl = document.getElementById('rotating-word');
+    function rotateWord() {
+      if (!rotEl) return;
+      rotEl.classList.remove('entering');
+      rotEl.classList.add('leaving');
+      setTimeout(() => {
+        rotIdx = (rotIdx + 1) % rotatingWords.length;
+        rotEl.textContent = rotatingWords[rotIdx];
+        rotEl.classList.remove('leaving');
+        rotEl.classList.add('entering');
+      }, 350);
+    }
+    setInterval(rotateWord, 2800);
 
     /* ---- FAQ accordion ---- */
     function toggleFaq(btn) {
