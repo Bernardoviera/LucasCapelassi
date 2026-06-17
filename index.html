@@ -188,31 +188,58 @@
   </div>
 
   <!-- ===== HERO ===== -->
-  <section class="hero-bg pt-16 pb-20 px-4" id="hero-wrap">
+  <section class="hero-bg pt-14 pb-20 px-4" id="hero-wrap">
     <div id="particles"></div>
-    <div class="max-w-3xl mx-auto text-center w-full relative z-10">
-      <span class="tag mb-6 inline-block hero-line-1">Curso online · Acesso imediato</span>
+    <div class="max-w-4xl mx-auto w-full relative z-10">
 
-      <h1 class="text-4xl md:text-6xl font-black leading-[1.1] mb-6 hero-line-2">
-        Você já tem os clientes.<br />
-        <span class="gold">Só falta esse serviço.</span>
+      <!-- top badge row -->
+      <div class="flex flex-wrap items-center gap-3 mb-8 hero-line-1 justify-center md:justify-start">
+        <span class="tag">Lente Zerada — Curso de Restauração</span>
+        <span class="text-gray-600 text-xs hidden md:inline">•</span>
+        <span class="text-gray-500 text-xs font-medium">Por Lucas Capelassi · S.O.S Faróis &amp; Latarias</span>
+      </div>
+
+      <!-- headline -->
+      <h1 class="text-4xl md:text-6xl font-black leading-[1.05] mb-5 hero-line-2 text-center md:text-left">
+        O farol amarelado<br />
+        do seu cliente<br />
+        <span class="gold">é dinheiro no seu bolso.</span>
       </h1>
 
-      <p class="text-gray-300 text-lg md:text-xl max-w-xl mx-auto mb-4 leading-relaxed hero-line-3">
-        Aprenda a restaurar faróis e lanternas do jeito certo — e comece a cobrar R$100 por farol ainda essa semana.
-      </p>
-      <p class="text-gray-500 text-base max-w-lg mx-auto mb-4 hero-line-4">
-        Quem já trabalha com carro sabe: o cliente chega, vê o farol amarelado e pergunta se você faz. Agora você vai poder dizer que sim.
-      </p>
-      <p class="text-red-400 text-sm font-semibold max-w-lg mx-auto mb-10 hero-line-4">
-        ⚠️ Cada farol que passa na sua frente sem você fazer = R$100 que ficou na mesa.
+      <!-- sub -->
+      <p class="text-gray-300 text-lg md:text-xl mb-6 leading-relaxed hero-line-3 text-center md:text-left max-w-2xl">
+        Aprenda a restaurar faróis e lanternas do zero — com técnica certa, material certo e resultado que o cliente recomenda.
+        Quem já trabalha com carro começa a cobrar <strong class="text-white">R$100 por farol</strong> ainda essa semana.
       </p>
 
-      <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870" target="_blank"
-         class="btn-gold inline-block px-10 py-5 rounded-xl text-lg pulse-btn hero-line-5">
-        Quero cobrar pelo meu próximo farol →
-      </a>
-      <p class="text-gray-600 text-sm mt-4 hero-line-5">🔒 Pagamento seguro via Hotmart · Pix, Cartão ou Boleto</p>
+      <!-- proof strip -->
+      <div class="flex flex-wrap gap-5 mb-10 hero-line-3 justify-center md:justify-start">
+        <div class="flex items-center gap-2 text-sm text-gray-400">
+          <span class="gold font-black text-base">✔</span> Sem equipamento caro
+        </div>
+        <div class="flex items-center gap-2 text-sm text-gray-400">
+          <span class="gold font-black text-base">✔</span> Acesso imediato no celular
+        </div>
+        <div class="flex items-center gap-2 text-sm text-gray-400">
+          <span class="gold font-black text-base">✔</span> Profissionais formados em todo o Brasil
+        </div>
+      </div>
+
+      <!-- CTA block -->
+      <div class="hero-line-4 flex flex-col items-center md:items-start gap-4">
+        <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870" target="_blank"
+           class="btn-gold inline-block px-10 py-5 rounded-xl text-lg pulse-btn">
+          Quero cobrar pelo meu próximo farol →
+        </a>
+        <div class="flex flex-wrap gap-4 text-xs text-gray-600 items-center justify-center md:justify-start">
+          <span>🔒 Pagamento seguro via Hotmart</span>
+          <span>·</span>
+          <span>Pix, Cartão ou Boleto</span>
+          <span>·</span>
+          <span class="text-red-400 font-semibold">⚠️ Oferta expira em <span id="timer2-hero" class="tabular-nums font-black text-red-400">00:30:00</span></span>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -577,7 +604,7 @@
         Math.floor((diff % 3600000) / 60000),
         Math.floor((diff % 60000) / 1000)
       ].map(n => String(n).padStart(2, '0')).join(':');
-      ['timer','timer2'].forEach(id => {
+      ['timer','timer2','timer2-hero'].forEach(id => {
         const el = document.getElementById(id);
         if (!el) return;
         el.textContent = fmt;
