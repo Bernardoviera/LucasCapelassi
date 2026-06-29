@@ -12,27 +12,32 @@
     .gold { color: #3B82F6; }
     .gold-light { color: #60A5FA; }
     .btn-gold {
-      background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+      background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 50%, #2563EB 100%);
       color: #fff;
       font-weight: 900;
       letter-spacing: 0.04em;
       transition: transform 0.15s, box-shadow 0.15s;
       text-transform: uppercase;
+      box-shadow: 0 4px 24px rgba(59,130,246,0.35), 0 1px 0 rgba(255,255,255,0.1) inset;
     }
     .btn-gold:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(59,130,246,0.5);
+      box-shadow: 0 8px 40px rgba(59,130,246,0.6), 0 1px 0 rgba(255,255,255,0.15) inset;
     }
     @keyframes pulse-gold {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.6); }
-      50%       { box-shadow: 0 0 0 14px rgba(59,130,246,0); }
+      0%, 100% { box-shadow: 0 4px 24px rgba(59,130,246,0.35), 0 0 0 0 rgba(59,130,246,0.5); }
+      50%       { box-shadow: 0 4px 24px rgba(59,130,246,0.35), 0 0 0 14px rgba(59,130,246,0); }
     }
     .pulse-btn { animation: pulse-gold 2.2s infinite; }
     .card { background: #161616; border: 1px solid #272727; }
     .card-yellow { background: #161616; border: 1px solid rgba(59,130,246,0.25); }
     .star { color: #3B82F6; }
     .check::before { content: "✔"; color: #3B82F6; margin-right: 10px; }
-    .hero-bg { background: radial-gradient(ellipse at top, #00071f 0%, #0c0c0c 60%); }
+    .hero-bg {
+      background:
+        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(37,99,235,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse at top, #00071f 0%, #0c0c0c 65%);
+    }
     .tag {
       display: inline-block;
       background: rgba(59,130,246,0.1);
@@ -48,10 +53,11 @@
     .divider { border-color: #222; }
     .module-num {
       min-width: 36px; height: 36px;
-      background: linear-gradient(135deg, #3B82F6, #2563EB);
+      background: linear-gradient(135deg, #60A5FA, #2563EB);
       color: #fff; font-weight: 900; font-size: 0.8rem;
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 12px rgba(59,130,246,0.4);
     }
     .pain-item { border-left: 3px solid #3B82F6; padding-left: 16px; }
     .testimonial-card {
@@ -141,9 +147,9 @@
       transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
     .card:hover, .testimonial-card:hover {
-      border-color: rgba(59,130,246,0.35);
+      border-color: rgba(59,130,246,0.4);
       transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.1), 0 4px 20px rgba(59,130,246,0.15);
     }
 
     /* ---- Module row hover ---- */
@@ -198,7 +204,7 @@
 <body class="text-white">
 
   <!-- ===== BARRA DE URGÊNCIA ===== -->
-  <div class="bg-blue-600 text-white text-center py-3 px-4">
+  <div class="text-white text-center py-3 px-4" style="background: linear-gradient(90deg, #1D4ED8 0%, #3B82F6 50%, #1D4ED8 100%); box-shadow: 0 2px 20px rgba(59,130,246,0.3);">
     <p class="font-black text-sm md:text-base tracking-wide">
       🔥 OFERTA POR TEMPO LIMITADO — expira em: <span id="timer" class="font-black tabular-nums">00:00:00</span>
     </p>
