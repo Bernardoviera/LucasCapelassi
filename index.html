@@ -9,11 +9,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     body { font-family: 'Inter', sans-serif; background: #0c0c0c; }
-    .gold { color: #F5C518; }
-    .gold-light { color: #fdd835; }
+    .gold { color: #3B82F6; }
+    .gold-light { color: #60A5FA; }
     .btn-gold {
-      background: linear-gradient(135deg, #F5C518 0%, #d4a017 100%);
-      color: #111;
+      background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+      color: #fff;
       font-weight: 900;
       letter-spacing: 0.04em;
       transition: transform 0.15s, box-shadow 0.15s;
@@ -21,23 +21,23 @@
     }
     .btn-gold:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(245,197,24,0.5);
+      box-shadow: 0 12px 35px rgba(59,130,246,0.5);
     }
     @keyframes pulse-gold {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(245,197,24,0.6); }
-      50%       { box-shadow: 0 0 0 14px rgba(245,197,24,0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.6); }
+      50%       { box-shadow: 0 0 0 14px rgba(59,130,246,0); }
     }
     .pulse-btn { animation: pulse-gold 2.2s infinite; }
     .card { background: #161616; border: 1px solid #272727; }
-    .card-yellow { background: #161616; border: 1px solid rgba(245,197,24,0.25); }
-    .star { color: #F5C518; }
-    .check::before { content: "✔"; color: #F5C518; margin-right: 10px; }
-    .hero-bg { background: radial-gradient(ellipse at top, #1a1200 0%, #0c0c0c 60%); }
+    .card-yellow { background: #161616; border: 1px solid rgba(59,130,246,0.25); }
+    .star { color: #3B82F6; }
+    .check::before { content: "✔"; color: #3B82F6; margin-right: 10px; }
+    .hero-bg { background: radial-gradient(ellipse at top, #00071f 0%, #0c0c0c 60%); }
     .tag {
       display: inline-block;
-      background: rgba(245,197,24,0.1);
-      border: 1px solid rgba(245,197,24,0.3);
-      color: #F5C518;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: #3B82F6;
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -48,12 +48,12 @@
     .divider { border-color: #222; }
     .module-num {
       min-width: 36px; height: 36px;
-      background: linear-gradient(135deg, #F5C518, #d4a017);
-      color: #111; font-weight: 900; font-size: 0.8rem;
+      background: linear-gradient(135deg, #3B82F6, #2563EB);
+      color: #fff; font-weight: 900; font-size: 0.8rem;
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
     }
-    .pain-item { border-left: 3px solid #F5C518; padding-left: 16px; }
+    .pain-item { border-left: 3px solid #3B82F6; padding-left: 16px; }
     .testimonial-card {
       background: #161616;
       border: 1px solid #272727;
@@ -66,7 +66,7 @@
       position: absolute;
       top: 12px; left: 20px;
       font-size: 4rem;
-      color: rgba(245,197,24,0.15);
+      color: rgba(59,130,246,0.15);
       font-family: Georgia, serif;
       line-height: 1;
     }
@@ -78,14 +78,14 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #F5C518;
+      color: #3B82F6;
       margin-bottom: 16px;
     }
     .section-label::before, .section-label::after {
       content: '';
       display: block;
       width: 24px; height: 1px;
-      background: #F5C518;
+      background: #3B82F6;
     }
 
     /* ---- Scroll reveal ---- */
@@ -130,7 +130,7 @@
     }
     .rotating-word {
       display: inline-block;
-      color: #F5C518;
+      color: #3B82F6;
       min-width: 2ch;
     }
     .rotating-word.entering { animation: wordIn 0.4s cubic-bezier(.22,1,.36,1) forwards; }
@@ -141,7 +141,7 @@
       transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
     .card:hover, .testimonial-card:hover {
-      border-color: rgba(245,197,24,0.35);
+      border-color: rgba(59,130,246,0.35);
       transform: translateY(-4px);
       box-shadow: 0 16px 40px rgba(0,0,0,0.5);
     }
@@ -151,8 +151,8 @@
       transition: border-color 0.2s, background 0.2s, transform 0.2s;
     }
     .module-row:hover {
-      border-color: rgba(245,197,24,0.4);
-      background: #1c1c00;
+      border-color: rgba(59,130,246,0.4);
+      background: #00071f;
       transform: translateX(4px);
     }
 
@@ -160,7 +160,7 @@
     .pain-item {
       transition: border-color 0.2s, padding-left 0.2s;
     }
-    .pain-item:hover { border-color: #fdd835; padding-left: 22px; }
+    .pain-item:hover { border-color: #60A5FA; padding-left: 22px; }
 
     /* ---- Golden sparkle particles ---- */
     @keyframes float-up {
@@ -172,7 +172,7 @@
       position: absolute;
       width: 4px; height: 4px;
       border-radius: 50%;
-      background: #F5C518;
+      background: #3B82F6;
       pointer-events: none;
       animation: float-up 2.5s ease-in-out infinite;
     }
@@ -198,7 +198,7 @@
 <body class="text-white">
 
   <!-- ===== BARRA DE URGÊNCIA ===== -->
-  <div class="bg-yellow-400 text-black text-center py-3 px-4">
+  <div class="bg-blue-600 text-white text-center py-3 px-4">
     <p class="font-black text-sm md:text-base tracking-wide">
       🔥 OFERTA POR TEMPO LIMITADO — expira em: <span id="timer" class="font-black tabular-nums">00:00:00</span>
     </p>
@@ -401,7 +401,7 @@
 
       <div class="card-yellow rounded-xl p-6 reveal">
         <p class="text-gray-300 text-sm leading-relaxed">
-          O curso custa <strong class="text-white">R$149</strong>. Um único farol já paga o curso com troco.<br />
+          O curso custa <strong class="text-white">R$97</strong>. Um único farol já paga o curso com troco.<br />
           <span class="gold font-bold">O ROI é no primeiro atendimento.</span>
         </p>
       </div>
@@ -416,7 +416,7 @@
         <h2 class="text-3xl md:text-5xl font-black">Lucas <span class="gold">Capelassi</span></h2>
       </div>
 
-      <div class="flex flex-col md:flex-row gap-0 overflow-hidden rounded-2xl reveal" style="border: 1px solid rgba(245,197,24,0.2);">
+      <div class="flex flex-col md:flex-row gap-0 overflow-hidden rounded-2xl reveal" style="border: 1px solid rgba(59,130,246,0.2);">
 
         <!-- foto grande -->
         <div class="md:w-2/5 flex-shrink-0">
@@ -445,7 +445,7 @@
             <li class="check text-gray-300">Já formou profissionais em todo o Brasil</li>
           </ul>
 
-          <blockquote class="border-l-2 border-yellow-400 pl-4 text-gray-400 text-sm italic">
+          <blockquote class="border-l-2 border-blue-400 pl-4 text-gray-400 text-sm italic">
             "Eu poderia guardar esse conhecimento pra mim. Mas quando você ensina, o mercado todo melhora — e você fica ainda mais na frente."
           </blockquote>
         </div>
@@ -460,7 +460,7 @@
       <div class="text-center mb-10 reveal">
         <div class="section-label justify-center">Quem já passou por aqui</div>
         <h2 class="text-3xl md:text-4xl font-black mb-3">Resultado de quem <span class="gold">aplicou</span></h2>
-        <p class="text-gray-500 text-sm">Mais de <strong class="text-yellow-400">500 profissionais</strong> já aprenderam com o Lucas</p>
+        <p class="text-gray-500 text-sm">Mais de <strong class="text-blue-400">500 profissionais</strong> já aprenderam com o Lucas</p>
       </div>
       <div class="columns-1 md:columns-3 gap-4">
         <div class="mb-4 reveal"><img src="WhatsApp Image 2026-06-15 at 10.24.00.jpeg" alt="Depoimento aluno" class="w-full rounded-2xl border border-gray-800" /></div>
@@ -497,14 +497,14 @@
       </div>
 
       <div class="card-yellow rounded-2xl p-8 text-center reveal">
-        <div class="inline-block bg-red-500 text-white text-xs font-black px-3 py-1 rounded-full mb-3 tracking-widest">62% OFF</div>
-        <p class="text-gray-600 text-sm line-through mb-1">De R$ 397,00</p>
+        <div class="inline-block bg-red-500 text-white text-xs font-black px-3 py-1 rounded-full mb-3 tracking-widest">61% OFF</div>
+        <p class="text-gray-600 text-sm line-through mb-1">De R$ 249,00</p>
         <div class="mb-1 price-pop">
           <span class="text-gray-400 text-base">por apenas </span>
-          <span class="text-6xl font-black gold">R$149</span>
+          <span class="text-6xl font-black gold">R$97</span>
           <span class="text-gray-400 text-lg">,00</span>
         </div>
-        <p class="text-yellow-300 font-bold text-base mb-2">ou 12x de R$ 41,06 no cartão</p>
+        <p class="text-blue-300 font-bold text-base mb-2">ou 12x de R$ 9,07 no cartão</p>
         <p class="text-gray-600 text-xs mb-6">Um único farol já paga o curso. Com troco.</p>
 
         <hr class="divider mb-6" />
@@ -525,7 +525,7 @@
         <p class="text-gray-600 text-xs">🔒 Pix · Cartão de crédito · Boleto</p>
 
         <div class="mt-4 pt-4 border-t border-gray-800">
-          <p class="text-yellow-400 text-xs font-semibold">⏱ Oferta expira em: <span id="timer2" class="font-black tabular-nums">00:00:00</span></p>
+          <p class="text-blue-400 text-xs font-semibold">⏱ Oferta expira em: <span id="timer2" class="font-black tabular-nums">00:00:00</span></p>
         </div>
       </div>
     </div>
@@ -585,7 +585,7 @@
             <span class="gold text-lg flex-shrink-0">+</span>
           </button>
           <div class="faq-answer hidden px-6 pb-5 text-gray-500 text-sm leading-relaxed">
-            Sim. Você pode parcelar em até 12x de R$ 41,06 no cartão de crédito, ou pagar à vista via Pix ou Boleto por R$ 149,00.
+            Sim. Você pode parcelar em até 12x de R$ 9,07 no cartão de crédito, ou pagar à vista via Pix ou Boleto por R$ 97,00.
           </div>
         </div>
 
