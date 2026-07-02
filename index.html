@@ -3,707 +3,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lente Zerada — Aprenda a Restaurar Faróis e Lanternas</title>
+  <title>Lucas Capelassi</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; background: #0c0c0c; }
-    .gold { color: #3B82F6; }
-    .gold-light { color: #60A5FA; }
-    .btn-gold {
-      background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 50%, #2563EB 100%);
-      color: #fff;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      transition: transform 0.15s, box-shadow 0.15s;
-      text-transform: uppercase;
-      box-shadow: 0 4px 24px rgba(59,130,246,0.35), 0 1px 0 rgba(255,255,255,0.1) inset;
-    }
-    .btn-gold:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 40px rgba(59,130,246,0.6), 0 1px 0 rgba(255,255,255,0.15) inset;
-    }
-    @keyframes pulse-gold {
-      0%, 100% { box-shadow: 0 4px 24px rgba(59,130,246,0.35), 0 0 0 0 rgba(59,130,246,0.5); }
-      50%       { box-shadow: 0 4px 24px rgba(59,130,246,0.35), 0 0 0 14px rgba(59,130,246,0); }
-    }
-    .pulse-btn { animation: pulse-gold 2.2s infinite; }
-    .card { background: #161616; border: 1px solid #272727; }
-    .card-yellow { background: #161616; border: 1px solid rgba(59,130,246,0.25); }
-    .star { color: #3B82F6; }
-    .check::before { content: "✔"; color: #3B82F6; margin-right: 10px; }
-    .hero-bg {
-      background:
-        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(37,99,235,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse at top, #00071f 0%, #0c0c0c 65%);
-    }
-    .tag {
-      display: inline-block;
-      background: rgba(59,130,246,0.1);
-      border: 1px solid rgba(59,130,246,0.3);
-      color: #3B82F6;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 999px;
-    }
-    .divider { border-color: #222; }
-    .module-num {
-      min-width: 36px; height: 36px;
-      background: linear-gradient(135deg, #60A5FA, #2563EB);
-      color: #fff; font-weight: 900; font-size: 0.8rem;
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 12px rgba(59,130,246,0.4);
-    }
-    .pain-item { border-left: 3px solid #3B82F6; padding-left: 16px; }
-    .testimonial-card {
-      background: #161616;
-      border: 1px solid #272727;
-      border-radius: 16px;
-      padding: 24px;
-      position: relative;
-    }
-    .testimonial-card::before {
-      content: '"';
-      position: absolute;
-      top: 12px; left: 20px;
-      font-size: 4rem;
-      color: rgba(59,130,246,0.15);
-      font-family: Georgia, serif;
-      line-height: 1;
-    }
-    .section-label {
-      display: inline-flex;
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0c0c0c;
+      min-height: 100vh;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #3B82F6;
-      margin-bottom: 16px;
-    }
-    .section-label::before, .section-label::after {
-      content: '';
-      display: block;
-      width: 24px; height: 1px;
-      background: #3B82F6;
+      justify-content: center;
     }
 
-    /* ---- Scroll reveal ---- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1); }
-    .reveal-left.visible  { opacity: 1; transform: translateX(0); }
-    .reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1); }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-    /* stagger delays */
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
-    .delay-5 { transition-delay: 0.5s; }
-    .delay-6 { transition-delay: 0.6s; }
-
-    /* ---- Hero text animation ---- */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-line-1 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.1s both; }
-    .hero-line-2 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.25s both; }
-    .hero-line-3 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.4s both; }
-    .hero-line-4 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.55s both; }
-    .hero-line-5 { animation: fadeUp 0.7s cubic-bezier(.22,1,.36,1) 0.7s both; }
-
-    /* ---- Rotating word ---- */
-    @keyframes wordIn {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes wordOut {
-      from { opacity: 1; transform: translateY(0); }
-      to   { opacity: 0; transform: translateY(-14px); }
-    }
-    .rotating-word {
-      display: inline-block;
-      color: #3B82F6;
-      min-width: 2ch;
-    }
-    .rotating-word.entering { animation: wordIn 0.4s cubic-bezier(.22,1,.36,1) forwards; }
-    .rotating-word.leaving  { animation: wordOut 0.35s cubic-bezier(.55,0,1,.45) forwards; }
-
-    /* ---- Card hover ---- */
-    .card, .card-yellow, .testimonial-card {
-      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-    }
-    .card:hover, .testimonial-card:hover {
-      border-color: rgba(59,130,246,0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.1), 0 4px 20px rgba(59,130,246,0.15);
+    .page-bg {
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(37,99,235,0.15) 0%, transparent 70%),
+        #0c0c0c;
     }
 
-    /* ---- Module row hover ---- */
-    .module-row {
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
-    }
-    .module-row:hover {
-      border-color: rgba(59,130,246,0.4);
-      background: #00071f;
-      transform: translateX(4px);
-    }
-
-    /* ---- Pain item hover ---- */
-    .pain-item {
-      transition: border-color 0.2s, padding-left 0.2s;
-    }
-    .pain-item:hover { border-color: #60A5FA; padding-left: 22px; }
-
-    /* ---- Golden sparkle particles ---- */
-    @keyframes float-up {
-      0%   { opacity: 0;   transform: translateY(0)   scale(0.5); }
-      20%  { opacity: 0.8; }
-      100% { opacity: 0;   transform: translateY(-80px) scale(1); }
-    }
-    .particle {
-      position: absolute;
-      width: 4px; height: 4px;
+    .avatar-ring {
+      padding: 3px;
+      background: linear-gradient(135deg, #3B82F6, #1D4ED8);
       border-radius: 50%;
-      background: #3B82F6;
-      pointer-events: none;
-      animation: float-up 2.5s ease-in-out infinite;
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.15), 0 8px 32px rgba(59,130,246,0.25);
     }
-    #hero-wrap { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
-    #hero-wrap > #particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 
-    /* ---- Timer flash when low ---- */
-    @keyframes flash-red {
-      0%, 100% { color: #ef4444; }
-      50%       { color: #fca5a5; }
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      padding: 16px 22px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+      border: 1px solid rgba(59,130,246,0.2);
+      background: #161616;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
     }
-    .timer-low { animation: flash-red 0.8s infinite; }
 
-    /* ---- Price pop ---- */
-    @keyframes pop {
-      0%   { transform: scale(0.85); opacity: 0; }
-      70%  { transform: scale(1.05); }
-      100% { transform: scale(1);    opacity: 1; }
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(59,130,246,0.07), transparent);
+      opacity: 0;
+      transition: opacity 0.18s;
     }
-    .price-pop { animation: pop 0.6s cubic-bezier(.22,1,.36,1) 0.3s both; }
+
+    .link-btn:hover {
+      transform: translateY(-3px);
+      border-color: rgba(59,130,246,0.5);
+      box-shadow: 0 8px 28px rgba(59,130,246,0.2), 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .link-btn:hover::before { opacity: 1; }
+
+    .link-btn-primary {
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.35);
+    }
+
+    .link-btn-primary:hover {
+      box-shadow: 0 8px 32px rgba(59,130,246,0.55);
+      border-color: transparent;
+    }
+
+    .link-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .link-btn-primary .link-icon {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .arrow {
+      color: rgba(255,255,255,0.4);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .link-btn:hover .arrow {
+      color: rgba(255,255,255,0.8);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .line-1 { animation: fadeUp 0.6s cubic-bezier(.22,1,.36,1) 0.05s both; }
+    .line-2 { animation: fadeUp 0.6s cubic-bezier(.22,1,.36,1) 0.15s both; }
+    .line-3 { animation: fadeUp 0.6s cubic-bezier(.22,1,.36,1) 0.25s both; }
+    .line-4 { animation: fadeUp 0.6s cubic-bezier(.22,1,.36,1) 0.35s both; }
+    .line-5 { animation: fadeUp 0.6s cubic-bezier(.22,1,.36,1) 0.45s both; }
   </style>
 </head>
-<body class="text-white">
+<body class="page-bg px-4 py-12">
 
-  <!-- ===== BARRA DE URGÊNCIA ===== -->
-  <div class="text-white text-center py-3 px-4" style="background: linear-gradient(90deg, #1D4ED8 0%, #3B82F6 50%, #1D4ED8 100%); box-shadow: 0 2px 20px rgba(59,130,246,0.3);">
-    <p class="font-black text-sm md:text-base tracking-wide">
-      🔥 OFERTA POR TEMPO LIMITADO — expira em: <span id="timer" class="font-black tabular-nums">00:00:00</span>
-    </p>
+  <div class="w-full max-w-sm mx-auto flex flex-col items-center gap-6">
+
+    <!-- Avatar -->
+    <div class="avatar-ring line-1">
+      <img src="lucas.jpg" alt="Lucas Capelassi"
+           class="w-24 h-24 rounded-full object-cover object-center block" />
+    </div>
+
+    <!-- Nome e bio -->
+    <div class="text-center line-2">
+      <h1 class="text-xl font-black text-white mb-1">Lucas Capelassi</h1>
+      <p class="text-gray-500 text-sm">Especialista em restauração de faróis · Fundador da S.O.S Faróis &amp; Latarias</p>
+    </div>
+
+    <!-- Separador -->
+    <div class="w-12 h-px bg-blue-600 opacity-60 line-3"></div>
+
+    <!-- Links -->
+    <div class="w-full flex flex-col gap-3 line-4">
+
+      <!-- Curso -->
+      <a href="/curso" class="link-btn link-btn-primary">
+        <div class="link-icon">🎓</div>
+        <div class="flex-1">
+          <div class="text-white font-bold text-sm leading-tight">Curso Lente Zerada</div>
+          <div class="text-blue-200 text-xs font-normal mt-0.5">Aprenda a restaurar faróis e cobrar por isso</div>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+
+      <!-- Loja -->
+      <a href="https://lojadofaroleiro.com/" target="_blank" rel="noopener" class="link-btn">
+        <div class="link-icon">🛒</div>
+        <div class="flex-1">
+          <div class="text-white font-bold text-sm leading-tight">Loja do Faroleiro</div>
+          <div class="text-gray-500 text-xs font-normal mt-0.5">Produtos para restauração de faróis</div>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- Rodapé -->
+    <p class="text-gray-700 text-xs line-5">© 2026 Lucas Capelassi</p>
+
   </div>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero-bg pt-14 pb-20 px-4" id="hero-wrap">
-    <div id="particles"></div>
-    <div class="max-w-4xl mx-auto w-full relative z-10">
-
-      <!-- top badge row -->
-      <div class="flex flex-wrap items-center gap-3 mb-8 hero-line-1 justify-center md:justify-start">
-        <span class="tag">Lente Zerada — Curso de Restauração</span>
-        <span class="text-gray-600 text-xs hidden md:inline">•</span>
-        <span class="text-gray-500 text-xs font-medium">Por Lucas Capelassi · S.O.S Faróis &amp; Latarias</span>
-      </div>
-
-      <!-- headline -->
-      <h1 class="text-4xl md:text-6xl font-black leading-[1.15] mb-5 hero-line-2 text-center md:text-left">
-        <span class="block md:inline">O <span class="rotating-word entering" id="rotating-word">farol amarelado</span></span>
-        <span class="block md:inline"> do seu cliente</span><br class="hidden md:block" />
-        <span class="gold block">é dinheiro no seu bolso.</span>
-      </h1>
-
-      <!-- sub -->
-      <p class="text-gray-300 text-lg md:text-xl mb-6 leading-relaxed hero-line-3 text-center md:text-left max-w-2xl">
-        Aprenda a restaurar faróis e lanternas do zero — com técnica certa, material certo e resultado que o cliente recomenda.
-        Quem já trabalha com carro começa a cobrar <strong class="text-white">R$100 por farol</strong> ainda essa semana.
-      </p>
-
-      <!-- proof strip -->
-      <div class="flex flex-wrap gap-5 mb-10 hero-line-3 justify-center md:justify-start">
-        <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="gold font-black text-base">✔</span> Sem equipamento caro
-        </div>
-        <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="gold font-black text-base">✔</span> Acesso imediato no celular
-        </div>
-        <div class="flex items-center gap-2 text-sm text-gray-400">
-          <span class="gold font-black text-base">✔</span> Profissionais formados em todo o Brasil
-        </div>
-      </div>
-
-      <!-- CTA block -->
-      <div class="hero-line-4 flex flex-col items-center md:items-start gap-4">
-        <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870" target="_blank"
-           class="btn-gold block w-full md:w-auto md:inline-block px-10 py-5 rounded-xl text-lg pulse-btn text-center">
-          Quero cobrar pelo meu próximo farol →
-        </a>
-        <div class="flex flex-wrap gap-4 text-xs text-gray-600 items-center justify-center md:justify-start">
-          <span>🔒 Pagamento seguro via Hotmart</span>
-          <span>·</span>
-          <span>Pix, Cartão ou Boleto</span>
-          <span>·</span>
-          <span class="text-red-400 font-semibold">⚠️ Oferta expira em <span id="timer2-hero" class="tabular-nums font-black text-red-400">00:30:00</span></span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===== DOR / IDENTIFICAÇÃO ===== -->
-  <section class="py-16 px-4 bg-black">
-    <div class="max-w-2xl mx-auto">
-      <div class="text-center mb-10 reveal">
-        <div class="section-label justify-center">Você se identifica?</div>
-        <h2 class="text-3xl md:text-4xl font-black">Quantas vezes isso já aconteceu com você?</h2>
-      </div>
-      <div class="space-y-5">
-        <div class="pain-item reveal delay-1">
-          <p class="text-gray-300">O cliente te pergunta se você faz restauração de farol e você tem que dizer que não faz — e perde o serviço.</p>
-        </div>
-        <div class="pain-item reveal delay-2">
-          <p class="text-gray-300">Você vê concorrentes cobrando R$80, R$120, R$150 por farol e pensa: <em class="text-white">"isso parece fácil, por que eu não faço?"</em></p>
-        </div>
-        <div class="pain-item reveal delay-3">
-          <p class="text-gray-300">Já tentou fazer por conta, ficou com resultado ruim e não soube o que errou.</p>
-        </div>
-        <div class="pain-item reveal delay-4">
-          <p class="text-gray-300">Quer agregar um serviço novo sem precisar comprar equipamento caro ou fazer curso presencial.</p>
-        </div>
-      </div>
-      <p class="text-center text-gray-400 mt-10 text-base reveal delay-5">Se marcou qualquer um desses, o <strong class="text-white">Lente Zerada</strong> foi feito pra você.</p>
-    </div>
-  </section>
-
-  <!-- ===== SOBRE O CURSO ===== -->
-  <section class="py-16 px-4" style="background:#0f0f0f;">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-12 reveal">
-        <div class="section-label justify-center">O que é o Lente Zerada</div>
-        <h2 class="text-3xl md:text-4xl font-black mb-4">Um curso <span class="gold">direto ao ponto</span> pra quem já está no mercado</h2>
-        <p class="text-gray-400 text-base max-w-xl mx-auto">Sem enrolação. Sem teoria desnecessária. Só o que você precisa pra aprender, aplicar e já cobrar pelo serviço.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="card rounded-2xl p-6 reveal delay-1">
-          <div class="text-3xl mb-3">⚡</div>
-          <h3 class="font-bold text-base mb-2">Rápido de aplicar</h3>
-          <p class="text-gray-500 text-sm">Você assiste hoje e já consegue aplicar no primeiro carro amanhã. Sem curva de aprendizado longa.</p>
-        </div>
-        <div class="card rounded-2xl p-6 reveal delay-2">
-          <div class="text-3xl mb-3">💸</div>
-          <h3 class="font-bold text-base mb-2">Baixo investimento inicial</h3>
-          <p class="text-gray-500 text-sm">Os materiais são baratos e fáceis de encontrar. O curso te mostra exatamente o que comprar e onde.</p>
-        </div>
-        <div class="card rounded-2xl p-6 reveal delay-3">
-          <div class="text-3xl mb-3">🚗</div>
-          <h3 class="font-bold text-base mb-2">Serve pra qualquer tipo de atendimento</h3>
-          <p class="text-gray-500 text-sm">Mecânico, polidor, lavajato, martelinho — quem já tem clientes pode agregar esse serviço imediatamente.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== MÓDULOS ===== -->
-  <section class="py-16 px-4 bg-black">
-    <div class="max-w-2xl mx-auto">
-      <div class="text-center mb-10">
-        <div class="section-label justify-center">Conteúdo</div>
-        <h2 class="text-3xl md:text-4xl font-black">O que você vai aprender</h2>
-      </div>
-      <div class="space-y-3">
-
-        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
-          <div class="module-num">01</div>
-          <div>
-            <h3 class="font-bold mb-1">Por que o farol amarela — e como isso muda tudo</h3>
-            <p class="text-gray-500 text-sm">Entenda o processo de oxidação, tipos de lente e o que é possível recuperar de verdade.</p>
-          </div>
-        </div>
-
-        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
-          <div class="module-num">02</div>
-          <div>
-            <h3 class="font-bold mb-1">Lista de materiais e onde comprar mais barato</h3>
-            <p class="text-gray-500 text-sm">Sem segredo, sem produto caro importado. O que você já consegue no mercado local funciona.</p>
-          </div>
-        </div>
-
-        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
-          <div class="module-num">03</div>
-          <div>
-            <h3 class="font-bold mb-1">O processo completo passo a passo</h3>
-            <p class="text-gray-500 text-sm">Lixamento, polimento e selagem — cada etapa explicada em vídeo pra você não errar.</p>
-          </div>
-        </div>
-
-        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
-          <div class="module-num">04</div>
-          <div>
-            <h3 class="font-bold mb-1">Faróis difíceis — trincados, muito danificados, internos</h3>
-            <p class="text-gray-500 text-sm">Como identificar o que dá pra restaurar e o que não dá, sem prometer o que não consegue entregar.</p>
-          </div>
-        </div>
-
-        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
-          <div class="module-num">05</div>
-          <div>
-            <h3 class="font-bold mb-1">Quanto cobrar — tabela de preços por tipo de serviço</h3>
-            <p class="text-gray-500 text-sm">Pare de cobrar barato por medo de perder cliente. Aqui você vê o que o mercado cobra de verdade.</p>
-          </div>
-        </div>
-
-        <div class="card module-row rounded-xl p-5 flex gap-4 items-start reveal">
-          <div class="module-num">06</div>
-          <div>
-            <h3 class="font-bold mb-1">Como virar referência na sua cidade</h3>
-            <p class="text-gray-500 text-sm">Dicas simples pra divulgar, ter clientes que voltam e ser indicado por quem já atendeu.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== QUANTO VOCÊ PODE GANHAR ===== -->
-  <section class="py-16 px-4" style="background:#0f0f0f;">
-    <div class="max-w-2xl mx-auto text-center">
-      <div class="section-label justify-center reveal">Potencial de ganho</div>
-      <h2 class="text-3xl md:text-4xl font-black mb-4 reveal">Quanto você pode ganhar<br /><span class="gold">com esse serviço?</span></h2>
-      <p class="text-gray-400 text-base mb-10 reveal">Faça as contas você mesmo:</p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-        <div class="card rounded-2xl p-6 reveal delay-1">
-          <p class="text-gray-500 text-xs uppercase tracking-widest mb-2">Preço médio por farol</p>
-          <p class="text-4xl font-black gold">R$100</p>
-          <p class="text-gray-500 text-xs mt-1">~20 minutos de trabalho</p>
-        </div>
-        <div class="card rounded-2xl p-6 reveal delay-2">
-          <p class="text-gray-500 text-xs uppercase tracking-widest mb-2">5 faróis por semana</p>
-          <p class="text-4xl font-black gold">R$500</p>
-          <p class="text-gray-500 text-xs mt-1">apenas nas horas vagas</p>
-        </div>
-        <div class="card rounded-2xl p-6 reveal delay-3">
-          <p class="text-gray-500 text-xs uppercase tracking-widest mb-2">Em um mês</p>
-          <p class="text-4xl font-black gold">R$2.000</p>
-          <p class="text-gray-500 text-xs mt-1">de renda extra no bolso</p>
-        </div>
-      </div>
-
-      <div class="card-yellow rounded-xl p-6 reveal">
-        <p class="text-gray-300 text-sm leading-relaxed">
-          O curso custa <strong class="text-white">R$97</strong>. Um único farol já paga o curso com troco.<br />
-          <span class="gold font-bold">O ROI é no primeiro atendimento.</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== INSTRUTOR ===== -->
-  <section class="py-20 px-4 bg-black">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-14 reveal">
-        <div class="section-label justify-center">Quem vai te ensinar</div>
-        <h2 class="text-3xl md:text-5xl font-black">Lucas <span class="gold">Capelassi</span></h2>
-      </div>
-
-      <div class="flex flex-col md:flex-row gap-0 overflow-hidden rounded-2xl reveal" style="border: 1px solid rgba(59,130,246,0.2);">
-
-        <!-- foto grande -->
-        <div class="md:w-2/5 flex-shrink-0">
-          <img src="lucas.jpg" alt="Lucas Capelassi na frente da S.O.S Faróis & Latarias"
-               class="w-full h-full object-cover object-center"
-               style="min-height: 280px; max-height: 380px;" />
-        </div>
-
-        <!-- conteúdo -->
-        <div class="md:w-3/5 p-8 md:p-12 flex flex-col justify-center" style="background:#161616;">
-          <p class="tag mb-4 self-start">Fundador · S.O.S Faróis &amp; Latarias</p>
-
-          <p class="text-white text-lg md:text-xl font-semibold leading-relaxed mb-6">
-            Lucas não veio de escola de negócios.<br />
-            Ele aprendeu na prática, abriu a própria loja e virou referência.
-          </p>
-
-          <p class="text-gray-400 text-sm leading-relaxed mb-8">
-            Hoje ele ensina porque sabe que a maioria dos profissionais que trabalha com carro ainda deixa esse serviço passar — e ele quer mudar isso. Cada aluno formado é mais um especialista no mercado que ele ajudou a criar.
-          </p>
-
-          <ul class="space-y-3 text-sm mb-8">
-            <li class="check text-gray-300">Especialista em restauração de faróis e lanternas</li>
-            <li class="check text-gray-300">Dono da <strong class="text-white">S.O.S Faróis &amp; Latarias</strong> — loja física comprovada</li>
-            <li class="check text-gray-300">Canal S.O.S Faróis no YouTube</li>
-            <li class="check text-gray-300">Já formou profissionais em todo o Brasil</li>
-          </ul>
-
-          <blockquote class="border-l-2 border-blue-400 pl-4 text-gray-400 text-sm italic">
-            "Eu poderia guardar esse conhecimento pra mim. Mas quando você ensina, o mercado todo melhora — e você fica ainda mais na frente."
-          </blockquote>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== DEPOIMENTOS ===== -->
-  <section class="py-16 px-4 bg-black">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-10 reveal">
-        <div class="section-label justify-center">Quem já passou por aqui</div>
-        <h2 class="text-3xl md:text-4xl font-black mb-3">Resultado de quem <span class="gold">aplicou</span></h2>
-        <p class="text-gray-500 text-sm">Mais de <strong class="text-blue-400">500 profissionais</strong> já aprenderam com o Lucas</p>
-      </div>
-      <div class="columns-1 md:columns-3 gap-4">
-        <div class="mb-4 reveal"><img src="WhatsApp Image 2026-06-15 at 10.24.00.jpeg" alt="Depoimento aluno" class="w-full rounded-2xl border border-gray-800" /></div>
-        <div class="mb-4 reveal"><img src="WhatsApp Image 2026-06-15 at 10.24.02 (2).jpeg" alt="Depoimento aluno" class="w-full rounded-2xl border border-gray-800" /></div>
-        <div class="mb-4 reveal"><img src="WhatsApp Image 2026-06-15 at 10.24.02 (3).jpeg" alt="Depoimento aluno" class="w-full rounded-2xl border border-gray-800" /></div>
-        <div class="mb-4 reveal"><img src="WhatsApp Image 2026-06-15 at 10.24.03 (2).jpeg" alt="Depoimento aluno" class="w-full rounded-2xl border border-gray-800" /></div>
-        <div class="mb-4 reveal"><img src="WhatsApp Image 2026-06-15 at 10.24.04 (1).jpeg" alt="Depoimento aluno" class="w-full rounded-2xl border border-gray-800" /></div>
-        <div class="mb-4 reveal"><img src="WhatsApp Image 2026-06-15 at 10.24.04.jpeg" alt="Depoimento aluno" class="w-full rounded-2xl border border-gray-800" /></div>
-        <div class="mb-4 reveal"><img src="WhatsApp Image 2026-06-15 at 10.28.35 (1).jpeg" alt="Depoimento aluno" class="w-full rounded-2xl border border-gray-800" /></div>
-        <div class="mb-4 reveal"><img src="WhatsApp Image 2026-06-15 at 10.28.35 (2).jpeg" alt="Depoimento aluno" class="w-full rounded-2xl border border-gray-800" /></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GARANTIA ===== -->
-  <section class="py-16 px-4" style="background:#0f0f0f;">
-    <div class="max-w-xl mx-auto text-center">
-      <div class="card-yellow rounded-2xl p-10">
-        <div class="text-6xl mb-5">🛡️</div>
-        <h2 class="text-2xl font-black mb-3"><span class="gold">7 dias de garantia</span> incondicional</h2>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Se você assistir o curso e achar que não valeu, manda um e-mail em até <strong class="text-white">7 dias</strong> e devolvemos <strong class="text-white">100% do seu dinheiro</strong>. Sem perguntas, sem burocracia. O risco é todo nosso.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PREÇO / CTA ===== -->
-  <section id="comprar" class="py-16 px-4 bg-black">
-    <div class="max-w-md mx-auto">
-      <div class="text-center mb-8">
-        <div class="section-label justify-center">Investimento</div>
-        <h2 class="text-3xl font-black">Quanto custa um serviço<br /><span class="gold">que você ainda não oferece?</span></h2>
-      </div>
-
-      <div class="card-yellow rounded-2xl p-8 text-center reveal">
-        <div class="inline-block bg-red-500 text-white text-xs font-black px-3 py-1 rounded-full mb-3 tracking-widest">61% OFF</div>
-        <p class="text-gray-600 text-sm line-through mb-1">De R$ 249,00</p>
-        <div class="mb-1 price-pop">
-          <span class="text-gray-400 text-base">por apenas </span>
-          <span class="text-5xl md:text-6xl font-black gold">R$97</span>
-          <span class="text-gray-400 text-lg">,00</span>
-        </div>
-        <p class="text-blue-300 font-bold text-base mb-2">ou 12x de R$ 9,07 no cartão</p>
-        <p class="text-gray-600 text-xs mb-6">Um único farol já paga o curso. Com troco.</p>
-
-        <hr class="divider mb-6" />
-
-        <ul class="text-left space-y-2 text-sm text-gray-300 mb-7">
-          <li class="check">Acesso imediato após o pagamento</li>
-          <li class="check">Funciona no celular, tablet e computador</li>
-          <li class="check">Certificado de conclusão digital</li>
-          <li class="check">Atualizações gratuitas</li>
-          <li class="check">Suporte via WhatsApp</li>
-        </ul>
-
-        <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870"
-           target="_blank"
-           class="btn-gold block w-full py-5 rounded-xl text-lg text-center pulse-btn mb-3">
-          Quero cobrar pelo meu próximo farol →
-        </a>
-        <p class="text-gray-600 text-xs">🔒 Pix · Cartão de crédito · Boleto</p>
-
-        <div class="mt-4 pt-4 border-t border-gray-800">
-          <p class="text-blue-400 text-xs font-semibold">⏱ Oferta expira em: <span id="timer2" class="font-black tabular-nums">00:00:00</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FAQ ===== -->
-  <section class="py-16 px-4" style="background:#0f0f0f;">
-    <div class="max-w-2xl mx-auto">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl font-black">Dúvidas <span class="gold">frequentes</span></h2>
-      </div>
-      <div class="space-y-3" id="faq">
-
-        <div class="faq-item card rounded-xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 font-semibold text-sm flex justify-between items-center gap-4">
-            Preciso ter experiência com carros?
-            <span class="gold text-lg flex-shrink-0">+</span>
-          </button>
-          <div class="faq-answer hidden px-6 pb-5 text-gray-500 text-sm leading-relaxed">
-            Não é obrigatório, mas quem já trabalha com carro aproveita muito mais rápido. O curso foi pensado pra mecânicos, polidores, lavajatos e qualquer profissional do ramo automotivo.
-          </div>
-        </div>
-
-        <div class="faq-item card rounded-xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 font-semibold text-sm flex justify-between items-center gap-4">
-            Precisa comprar equipamento caro?
-            <span class="gold text-lg flex-shrink-0">+</span>
-          </button>
-          <div class="faq-answer hidden px-6 pb-5 text-gray-500 text-sm leading-relaxed">
-            Não. Os materiais são simples e baratos — você vai aprender exatamente o que comprar, onde e quanto custa. Dá pra começar com pouco.
-          </div>
-        </div>
-
-        <div class="faq-item card rounded-xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 font-semibold text-sm flex justify-between items-center gap-4">
-            Como funciona a garantia?
-            <span class="gold text-lg flex-shrink-0">+</span>
-          </button>
-          <div class="faq-answer hidden px-6 pb-5 text-gray-500 text-sm leading-relaxed">
-            7 dias corridos após a compra. Se por qualquer motivo não ficar satisfeito, manda um e-mail e devolvemos tudo. Sem perguntas.
-          </div>
-        </div>
-
-        <div class="faq-item card rounded-xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 font-semibold text-sm flex justify-between items-center gap-4">
-            Como acesso o curso?
-            <span class="gold text-lg flex-shrink-0">+</span>
-          </button>
-          <div class="faq-answer hidden px-6 pb-5 text-gray-500 text-sm leading-relaxed">
-            Assim que o pagamento for confirmado você recebe um e-mail com o acesso. Funciona em qualquer celular, tablet ou computador.
-          </div>
-        </div>
-
-        <div class="faq-item card rounded-xl overflow-hidden">
-          <button onclick="toggleFaq(this)" class="w-full text-left px-6 py-5 font-semibold text-sm flex justify-between items-center gap-4">
-            Posso parcelar?
-            <span class="gold text-lg flex-shrink-0">+</span>
-          </button>
-          <div class="faq-answer hidden px-6 pb-5 text-gray-500 text-sm leading-relaxed">
-            Sim. Você pode parcelar em até 12x de R$ 9,07 no cartão de crédito, ou pagar à vista via Pix ou Boleto por R$ 97,00.
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER CTA ===== -->
-  <section class="py-16 px-4 bg-black text-center border-t border-gray-900">
-    <p class="text-gray-500 text-sm mb-3">Você já tem o cliente. Só falta esse serviço.</p>
-    <h2 class="text-3xl md:text-4xl font-black mb-6">Comece hoje.<br /><span class="gold">Cobre amanhã.</span></h2>
-    <a href="https://pay.hotmart.com/K96460762A?off=rui5vicr&hotfeature=51&_hi=eyJjaWQiOiIxNzc5OTk3MzcwMTY4ODMyOTc1NTkwMDYwOTMyNzAwIiwiYmlkIjoiMTc3OTk5NzM3MDE2ODgzMjk3NTU5MDA2MDkzMjcwMCIsInNpZCI6IjE1MjE4MWMwYjFlNTRmNTJiZjRjNDkxZjMxMDEyMWNhIn0=.1781289932007&bid=1781289936870"
-       target="_blank"
-       class="btn-gold block w-full max-w-sm mx-auto md:inline-block md:w-auto px-10 py-5 rounded-xl text-lg pulse-btn text-center">
-      Quero cobrar pelo meu próximo farol →
-    </a>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="bg-black border-t border-gray-900 py-6 px-4 text-center text-gray-700 text-xs">
-    <p>© 2026 Lente Zerada — Lucas Capelassi. Todos os direitos reservados.</p>
-    <p class="mt-1">Ao comprar você concorda com os termos de uso e política de privacidade.</p>
-  </footer>
-
-  <script>
-    /* ---- Timer ---- */
-    const TIMER_MS = 30 * 60 * 1000;
-    const timerStart = Date.now();
-    function updateTimers() {
-      const diff = TIMER_MS - (Date.now() - timerStart);
-      const fmt = diff <= 0 ? '00:00:00' : [
-        Math.floor(diff / 3600000),
-        Math.floor((diff % 3600000) / 60000),
-        Math.floor((diff % 60000) / 1000)
-      ].map(n => String(n).padStart(2, '0')).join(':');
-      ['timer','timer2','timer2-hero'].forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.textContent = fmt;
-        if (diff > 0 && diff < 300000) el.classList.add('timer-low');
-        else el.classList.remove('timer-low');
-      });
-    }
-    setInterval(updateTimers, 1000);
-    updateTimers();
-
-    /* ---- Rotating word ---- */
-    const rotatingWords = [
-      'farol amarelado',
-      'lanterna baça',
-      'farol opaco',
-      'farol arranhado',
-      'lanterna amarela',
-      'farol sem brilho',
-    ];
-    let rotIdx = 0;
-    const rotEl = document.getElementById('rotating-word');
-    function rotateWord() {
-      if (!rotEl) return;
-      rotEl.classList.remove('entering');
-      rotEl.classList.add('leaving');
-      setTimeout(() => {
-        rotIdx = (rotIdx + 1) % rotatingWords.length;
-        rotEl.textContent = rotatingWords[rotIdx];
-        rotEl.classList.remove('leaving');
-        rotEl.classList.add('entering');
-      }, 350);
-    }
-    setInterval(rotateWord, 2000);
-
-    /* ---- FAQ accordion ---- */
-    function toggleFaq(btn) {
-      const ans = btn.nextElementSibling;
-      const icon = btn.querySelector('span');
-      const open = !ans.classList.contains('hidden');
-      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
-      document.querySelectorAll('.faq-item button span').forEach(i => i.textContent = '+');
-      if (!open) { ans.classList.remove('hidden'); icon.textContent = '−'; }
-    }
-
-    /* ---- Scroll reveal ---- */
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => observer.observe(el));
-
-    /* ---- Partículas douradas no hero ---- */
-    const container = document.getElementById('particles');
-    function spawnParticle() {
-      if (!container) return;
-      const p = document.createElement('div');
-      p.className = 'particle';
-      const size = Math.random() * 4 + 2;
-      p.style.cssText = `
-        width:${size}px; height:${size}px;
-        left:${Math.random() * 100}%;
-        bottom:${Math.random() * 30}%;
-        animation-duration:${2 + Math.random() * 2.5}s;
-        animation-delay:${Math.random() * 1.5}s;
-        opacity:0;
-      `;
-      container.appendChild(p);
-      setTimeout(() => p.remove(), 5000);
-    }
-    setInterval(spawnParticle, 350);
-    for (let i = 0; i < 8; i++) setTimeout(spawnParticle, i * 200);
-  </script>
 </body>
 </html>
